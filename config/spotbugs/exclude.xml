@@ -2,6 +2,6 @@
 <FindBugsFilter>
     <!--
       初始模板不做默认忽略。
-      历史项目迁移时如需临时豁免，请在此文件新增并在 docs/00-governance/legacy-baseline.md 记录清退时间。
+      历史项目迁移时如需临时豁免，请在此文件新增并在 harness-collab/05-methodology/00-governance/legacy-baseline.md 记录清退时间。
     -->
 </FindBugsFilter>
