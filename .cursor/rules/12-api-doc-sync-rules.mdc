@@ -6,6 +6,11 @@ alwaysApply: true
 
 # API Doc Sync Rules
 
+## 权威来源说明
+
+- 本文件为 API 文档同步规则权威定义。
+- `docs/05-rules/api-doc-sync-rules.md` 为同步副本。
+
 ## 变更触发条件
 以下任一变更发生，必须同步更新接口文档：
 - 入参结构变更

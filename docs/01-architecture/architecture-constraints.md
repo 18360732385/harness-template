@@ -2,16 +2,16 @@
 
 ## 分层模型
 
-- interface（controller）：入站适配层，处理协议与参数校验。
+- interfaces（controller）：入站适配层，处理协议与参数校验。
 - application（service）：应用编排层，负责业务流程。
 - domain（domain/model）：核心业务规则层。
 - infrastructure（repository/client/mapper）：出站适配层，负责存储和外部系统访问。
 
 ## 依赖方向
 
-- 允许：`interface -> application -> domain`
+- 允许：`interfaces -> application -> domain`
 - 允许：`infrastructure -> domain`（实现领域端口/仓储接口）
-- 禁止：`application -> interface`
+- 禁止：`application -> interfaces`
 - 禁止：`domain -> infrastructure`
 
 ## 包结构建议

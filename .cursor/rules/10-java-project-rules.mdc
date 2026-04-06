@@ -6,6 +6,11 @@ alwaysApply: true
 
 # Java Project Rules
 
+## 权威来源说明
+
+- 本文件为 Java Project Rule 权威定义。
+- `docs/05-rules/java-project-rules.md` 必须与本文件保持同步。
+
 ## 架构分层
 - `interfaces`：控制器与入站适配。
 - `application`：业务编排与用例。

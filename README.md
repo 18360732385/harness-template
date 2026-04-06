@@ -31,9 +31,10 @@
 
 - 静态检查：Checkstyle、SpotBugs
 - 结构测试：ArchUnit（分层依赖方向）
-- 覆盖率：JaCoCo（模板默认阈值，可按项目阶段调整）
+- 覆盖率：JaCoCo（模板默认 `warn` 语义，可按项目阶段切换 `enforce`）
 - 文档门禁：API 变更文档同步、功能资产同步
 - 统一命令：`mvn clean verify`
+- CI：JDK 17/21 矩阵校验 + 可选 `security-scan`（OWASP Dependency-Check）
 
 ## 迁移策略（历史项目）
 
@@ -42,6 +43,9 @@
 ## 新项目使用建议
 
 建议从 `warn` 启动，首个稳定迭代切换至 `enforce`，兼顾效率与质量。
+
+- 历史项目建议：`mvn clean verify -Pharness-legacy`
+- 新项目建议：`mvn clean verify -Pharness-new`
 
 ## 通用复用指南（模板定位）
 
@@ -52,4 +56,4 @@
 ## 说明
 
 - 当前仓库已包含可直接执行的正式配置：`.cursor/rules/*.mdc`、`pom.xml`、`config/*`、`src/test/java/*`。
-- `docs/05-rules/` 与 `docs/00-governance/quality-tooling-templates.md` 继续保留为“可复制模板”，便于迁移到其他仓库。
+- `.cursor/rules/*.mdc` 是规则权威来源，`docs/05-rules/` 与 `docs/00-governance/quality-tooling-templates.md` 为可复制模板副本。

@@ -6,6 +6,11 @@ alwaysApply: true
 
 # Testing And Quality Rules
 
+## 权威来源说明
+
+- 本文件为测试与质量规则权威定义。
+- `docs/05-rules/testing-and-quality-rules.md` 为同步副本。
+
 ## 测试策略
 - 单元测试：覆盖正常路径、边界路径、异常路径。
 - 集成测试：覆盖核心业务链路和外部依赖交互。
@@ -17,7 +22,8 @@ alwaysApply: true
 - `enforce`：不达标即阻塞合入。
 
 ## 最低交付门槛
-- `mvn clean test` 通过。
+- `mvn clean verify` 通过（统一门禁命令）。
 - Checkstyle 与 SpotBugs 无阻塞问题。
 - ArchUnit 分层约束通过。
+- JaCoCo 覆盖率检查完成（默认模板为 `warn` 语义，需按项目阶段切换为 `enforce`）。
 - API 文档与 `func.md` 已同步。
