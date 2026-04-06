@@ -21,6 +21,15 @@
 - 未达标直接阻塞合入。
 - 适用于新项目与完成治理后的历史项目。
 
+## 一页纸（与 Profile、文档复制）
+
+| 阶段 | 与 CI / 本地 | 文档包建议 |
+|------|----------------|------------|
+| observe / warn | 默认 **`harness-legacy`**：`mvn clean verify` 等价于带 `-Pharness-legacy`（[`pom.xml`](../../../pom.xml) `activeByDefault`） | 见 [Retrofit Playbook 一页纸矩阵](../02-engineering/retrofit-playbook.md) |
+| enforce（新项目或已收敛存量） | **`harness-new`**：`mvn clean verify -Pharness-new`（更严 Checkstyle、JaCoCo 失败即阻塞） | 完整 **methodology 00–05** + Cursor 规则 |
+
+详细矩阵（含应复制子目录、JaCoCo 语义）以 [**retrofit-playbook**](../02-engineering/retrofit-playbook.md) 为准。
+
 ## 门禁项
 
 - 静态检查通过（Checkstyle、SpotBugs）。

@@ -1,7 +1,7 @@
 ---
 description: 测试与质量门禁规则
-globs:
-alwaysApply: true
+globs: "**/*.java"
+alwaysApply: false
 ---
 
 # Testing And Quality Rules
@@ -28,7 +28,7 @@ alwaysApply: true
 ## 最低交付门槛
 - `mvn clean verify` 通过（统一门禁命令）。
 - Checkstyle 与 SpotBugs 无阻塞问题。
-- 分层与依赖方向符合 `harness-collab/methodology/01-architecture/architecture-constraints.md`，经评审与治理闭环落实（本模板不内置自动结构测试；如需可自行引入 ArchUnit）。
+- 分层与依赖方向符合 `harness-collab/methodology/01-architecture/architecture-constraints.md`，经评审与治理闭环落实（本模板不内置自动结构测试；机器校验可选见 `harness-collab/methodology/01-architecture/archunit-recipe.md`）。
 - JaCoCo 覆盖率检查完成（默认模板为 `warn` 语义，需按项目阶段切换为 `enforce`）。
 - API 文档与 `harness-collab/func.md` 已同步。
 

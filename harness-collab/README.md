@@ -7,6 +7,17 @@
 
 根目录 **不再** 保留单独的 `docs/`；若迁入已有项目且对方根目录已有 `docs/`，可只复制本目录下的子树（例如仅 `product-specs` + `.cursor/rules`），避免覆盖对方整棵文档树。
 
+## 规则与方法论文档：编辑顺序（防三份漂移）
+
+本仓库存在三处与 Cursor 规则相关的内容，**修改时必须按顺序同步**：
+
+1. **权威编辑**：仓库根 [`.cursor/rules/*.mdc`](../.cursor/rules/)。
+2. **整包复制用副本**：在同一提交内执行（PowerShell 示例）  
+   `Copy-Item -Force .cursor/rules/*.mdc harness-collab/cursor-rules/`
+3. **Markdown 镜像**（供跨仓复制与阅读）：更新 [harness-collab/methodology/05-rules/](methodology/05-rules/) 下对应 `.md`（内容与 `.mdc` 对齐，可略去 YAML frontmatter；触发范围说明写在镜像文首）。
+
+CI 会对 `harness-collab/exec-plans` 中非模板的计划文件做 **plan_vs_impl** 关键字检查（见根目录 [`scripts/verify-exec-plans.sh`](../scripts/verify-exec-plans.sh)）。
+
 ## func.md 权威路径约定
 
 | 场景 | 建议 |

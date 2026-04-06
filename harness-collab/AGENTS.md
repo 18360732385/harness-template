@@ -16,6 +16,15 @@ alwaysApply: true
 - 新项目 Bootstrap：直接采用全套目录与门禁。
 - 历史项目 Retrofit：按渐进策略接入（observe/warn/enforce）。
 
+## 2.1 权威优先级（冲突时）
+
+当用户指令、本协议、Cursor 规则或其它文档要求不一致时，按下列顺序解释（前者优先）：
+
+1. **当前任务中用户的明确指令**（含范围、取舍、禁止项）。
+2. **本文件（harness-collab/AGENTS.md）**与团队已采纳的 **`harness-collab/README.md`** 约定（例如 `func.md` 的权威路径）。
+3. **仓库根 `.cursor/rules/*.mdc`**（通用工程规则；其中 Java 专属规则仅在与 `**/*.java` 相关会话中由编辑器附加，见各规则 frontmatter）。
+4. **`harness-collab/methodology/*`** 中的方法与模板文档。
+
 ## 3. 强制执行顺序
 
 1. 阅读 `harness-collab/func.md`，确认是否可复用已有能力。

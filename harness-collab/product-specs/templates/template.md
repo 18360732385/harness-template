@@ -1,5 +1,17 @@
 # Product Spec 模板
 
+> **文档标识（REQ-Root）：** `REQ-YYYYMMDD-序号`（例：`REQ-20260406-001`，同一需求文档内条目用 `REQ-…-A/B` 细分）  
+> **关联设计：** （设计产出后填写 `DES-…`）
+
+## 0. 需求条目（可验收）
+
+与 `harness-collab/design-docs` 中的设计追溯一一对应；每条需求应有可测试的验收要点。
+
+| 需求 ID | 简述 | 验收要点（Given/When/Then 或检查项） |
+|---|---|---|
+| REQ-YYYYMMDD-001-A | 待补充 | 待补充 |
+| REQ-YYYYMMDD-001-B | 待补充 | 待补充 |
+
 ## 1. 背景
 - 业务背景：
 - 现状痛点：
@@ -25,7 +37,7 @@
 ## 6. 验收标准
 - 功能验收（Given/When/Then）：
 - 质量验收（性能/稳定性/可观测）：
-- 文档验收（API/func/设计）：
+- 文档验收（API/`harness-collab/func.md`/设计）：
 
 ## 7. 风险与约束
 - 风险项：
@@ -54,6 +66,6 @@
 
 ## 12. 完成定义（DoD）
 - [ ] 已完成需求评审并冻结范围
-- [ ] 已输出 `harness-collab/design-docs`
-- [ ] 已输出 `harness-collab/exec-plans`
+- [ ] 已输出 `harness-collab/design-docs`（含 `DES-` 标识与对本 REQ 的映射）
+- [ ] 已输出 `harness-collab/exec-plans`（含 `TASK-` 与 plan_vs_impl）
 - [ ] 已定义验收标准并可测试

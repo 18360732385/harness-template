@@ -1,7 +1,7 @@
 ---
 description: Java 项目工程与编码规则（Spring Boot + Maven）
-globs:
-alwaysApply: true
+globs: "**/*.java"
+alwaysApply: false
 ---
 
 # Java Project Rules

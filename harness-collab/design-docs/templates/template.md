@@ -1,5 +1,15 @@
 # Design Doc 模板
 
+> **文档标识：** `DES-YYYYMMDD-序号`（例：`DES-20260406-001`）  
+> **追溯需求：** `REQ-…`（可多个，须与 `harness-collab/product-specs` 中需求 ID 一致）
+
+## 0. 需求与设计映射
+
+| 需求 ID（REQ） | 本设计对应章节 / 方案要点 |
+|---|---|
+| REQ-…-A | §3 方案概览 / … |
+| REQ-…-B | §5 接口设计 / … |
+
 ## 1. 设计背景
 - 需求来源：
 - 业务上下文：
@@ -63,7 +73,8 @@
 - 最终一致性补偿策略：
 
 ## 13. 完成定义（DoD）
-- [ ] 与 `harness-collab/product-specs` 对齐并可追溯
+- [ ] 与 `harness-collab/product-specs` 中 REQ 条目对齐并可追溯
 - [ ] 接口与数据模型变更已明确
 - [ ] 风险与回滚可执行
 - [ ] 测试策略可落地
+- [ ] `harness-collab/exec-plans` 中已有对应 TASK 映射

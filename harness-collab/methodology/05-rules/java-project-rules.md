@@ -6,6 +6,7 @@
 - 本文件路径：`harness-collab/methodology/05-rules/java-project-rules.md`
 - 本文件定位：便于复用到外部仓库的文档镜像
 - 维护原则：以 `.mdc` 为准，本文件仅做同步副本
+- **在 Cursor 中的生效范围**：对应 `.mdc` 使用 `globs: "**/*.java"`、`alwaysApply: false`，通常在编辑或聚焦 Java 源文件时附加本规则。
 
 ## 分层约束
 

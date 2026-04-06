@@ -5,7 +5,14 @@
 - 权威来源：仓库根目录 `.cursor/rules/*.mdc`
 - 本文件路径：`harness-collab/methodology/05-rules/user-rules.md`
 - 本目录用途：跨仓复制模板与阅读参考
-- 同步要求：若规则发生变更，必须先更新 `.cursor/rules/*.mdc`，再同步 `harness-collab/methodology/05-rules/`
+- 同步要求：若规则发生变更，必须先更新 `.cursor/rules/*.mdc`，再同步 `harness-collab/methodology/05-rules/`；副本目录 `harness-collab/cursor-rules/` 见该目录 README 中的复制命令。
+
+## 权威优先级（冲突时）
+
+1. 当前任务中用户的明确指令。  
+2. `harness-collab/AGENTS.md` 与 `harness-collab/README.md`（含 func 路径约定）。  
+3. `.cursor/rules/*.mdc` 与方法论文档镜像。  
+4. 其它说明；若存在多个 `func.md` 路径，以 `harness-collab/README.md` 表格为准。
 
 ## 适用范围
 

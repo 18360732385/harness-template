@@ -5,7 +5,7 @@
 | 序号 | 目录 | 说明 |
 |------|------|------|
 | 00 | `00-governance/` | 质量门禁、基线、工具模板说明 |
-| 01 | `01-architecture/` | 分层与架构约束 |
+| 01 | `01-architecture/` | 分层与架构约束（可选 [ArchUnit 食谱](01-architecture/archunit-recipe.md)） |
 | 02 | `02-engineering/` | 研发流程与存量改造手册 |
 | 03 | `03-ai-workflow/` | AI 交付与 plan_vs_impl |
 | 04 | `04-api-standards/` | 接口文档模板 |

@@ -25,7 +25,10 @@ jobs:
           cache: maven
 
       - name: Run Maven Verify
-        run: mvn --batch-mode --no-transfer-progress clean verify
+        run: mvn --batch-mode --no-transfer-progress clean verify -Pharness-legacy
+
+      - name: Verify exec-plans (non-template) mention plan_vs_impl
+        run: bash scripts/verify-exec-plans.sh
 
       - name: Upload Surefire Reports
         if: always()

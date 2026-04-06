@@ -11,6 +11,13 @@ alwaysApply: true
 - 本目录（`.cursor/rules`）是规则权威来源。
 - `harness-collab/methodology/05-rules` 是可复制的 Markdown 副本，变更时需与本目录同步更新。
 
+## 权威优先级（冲突时）
+
+1. 当前对话中**用户的明确指令**。
+2. **`harness-collab/AGENTS.md`** 与 **`harness-collab/README.md`**（含 `func.md` 路径等约定）。
+3. 本目录 **`.cursor/rules/*.mdc`**（及 Methodology 镜像文档）。
+4. 其它方法论文档；`func.md` 若存在多路径可能，以 **`harness-collab/README.md`** 表格为准。
+
 ## 目标
 - 让 AI 深度参与需求理解、设计、计划、编码、测试、修复全流程。
 - 保证输出可追溯、可验证、可复用。
