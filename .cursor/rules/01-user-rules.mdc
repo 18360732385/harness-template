@@ -1,0 +1,32 @@
+---
+description: Harness 用户协作规则（Java 通用）
+globs:
+alwaysApply: true
+---
+
+# 用户协作规则
+
+## 目标
+- 让 AI 深度参与需求理解、设计、计划、编码、测试、修复全流程。
+- 保证输出可追溯、可验证、可复用。
+
+## 强制执行流程
+1. 开发前必须先读取 `func.md`，评估复用。
+2. 先产出 `product-specs`，再产出 `design-docs`，再产出 `exec-plans`。
+3. 严格执行 plan_vs_impl；计划未覆盖的实现不得直接落地。
+4. 所有关键改动必须补齐测试与文档。
+
+## 提问与澄清策略
+- 仅在关键歧义点发问，优先给默认可执行方案。
+- 大任务拆成原子步骤，确保每步可验证。
+
+## 输出物要求
+- 需求：`product-specs/*`
+- 设计：`design-docs/*`
+- 计划：`exec-plans/*`
+- 实现与测试：`src/main/java/*`、`src/test/java/*`
+- 文档同步：`docs/*`、`func.md`
+
+## 新旧项目复用策略
+- 新项目：默认 `warn`，首个迭代后切 `enforce`。
+- 历史项目：`observe -> warn -> enforce` 渐进启用。

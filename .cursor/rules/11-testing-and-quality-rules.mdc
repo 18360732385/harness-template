@@ -1,0 +1,23 @@
+---
+description: 测试与质量门禁规则
+globs:
+alwaysApply: true
+---
+
+# Testing And Quality Rules
+
+## 测试策略
+- 单元测试：覆盖正常路径、边界路径、异常路径。
+- 集成测试：覆盖核心业务链路和外部依赖交互。
+- 回归测试：缺陷修复必须有对应回归用例。
+
+## 质量门禁策略
+- `observe`：采集数据，不阻塞。
+- `warn`：告警并纳入治理清单。
+- `enforce`：不达标即阻塞合入。
+
+## 最低交付门槛
+- `mvn clean test` 通过。
+- Checkstyle 与 SpotBugs 无阻塞问题。
+- ArchUnit 分层约束通过。
+- API 文档与 `func.md` 已同步。
