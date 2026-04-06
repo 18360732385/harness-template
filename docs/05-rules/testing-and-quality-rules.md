@@ -24,3 +24,15 @@
 - 静态检查无阻塞问题。
 - 结构测试无依赖方向违规。
 - 文档同步完成（API + func）。
+
+## 分档执行命令
+
+- 历史项目：`mvn clean verify -Pharness-legacy`
+- 新项目：`mvn clean verify -Pharness-new`
+- 可选安全扫描：`mvn clean verify -Psecurity-scan`
+
+## 验收证据
+
+- Surefire：`target/surefire-reports/*`
+- SpotBugs：`target/spotbugsXml.xml`
+- JaCoCo：`target/site/jacoco/*`

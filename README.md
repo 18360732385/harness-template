@@ -27,6 +27,29 @@
 5. 通过质量门禁（Checkstyle、SpotBugs、ArchUnit）。
 6. 同步 API 与功能文档（`docs/04-api-standards`、`func.md`）。
 
+## 模板使用入口导航
+
+### 第一步：明确规则与流程
+- 先读：`AGENTS.md`
+- 再读：`.cursor/rules/*.mdc`（权威规则）
+- 参考：`docs/05-rules/*`（可复制副本）
+
+### 第二步：产出三大核心文档
+- 需求规格：`product-specs/templates/template.md`
+- 技术设计：`design-docs/templates/template.md`
+- 执行计划：`exec-plans/templates/template.md`
+
+### 第三步：执行与验收
+- 研发流程：`docs/02-engineering/dev-workflow.md`
+- AI 交付：`docs/03-ai-workflow/ai-delivery-playbook.md`
+- 门禁治理：`docs/00-governance/quality-gates.md`
+- 统一验证：`mvn clean verify`
+
+### 第四步：新老项目分档
+- 历史项目：`mvn clean verify -Pharness-legacy`
+- 新项目：`mvn clean verify -Pharness-new`
+- 可选安全扫描：`mvn clean verify -Psecurity-scan`
+
 ## 质量门禁
 
 - 静态检查：Checkstyle、SpotBugs
