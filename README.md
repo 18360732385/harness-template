@@ -16,7 +16,7 @@
 - `exec-plans/`：执行计划模板与实例。
 - `.cursor/rules/`：User Rules 与 Java Project Rules。
 - `config/`：Checkstyle 与 SpotBugs 配置。
-- `src/main/java/.../controller|service|domain|repository`：分层包骨架占位。
+- `src/main/java/.../controller|service|domain|repository`：分层包骨架占位；落地时可按建议结构补充 `config`、`common` 等横切包。
 - `src/test/java/`：测试根目录（本模板无强制示例类；按业务补充单测与集成测试）。
 
 ## 仓库根目录结构（当前）
@@ -69,21 +69,6 @@
 │       ├── retrofit-template.md                                  # 历史项目改造类需求模板
 │       └── template.md                                          # 通用产品规格模板
 ├── src/                                                          # 源码与测试根目录（Maven 标准布局）
-│   ├── main/                                                     # 主代码与资源
-│   │   └── java/                                                 # Java 源码根
-│   │       └── com/
-│   │           └── example/
-│   │               └── harness/                               # 示例根包（可整体替换）
-│   │                   ├── controller/                         # 【分层】入站适配
-│   │                   │   └── package-info.java
-│   │                   ├── domain/                             # 【分层】领域
-│   │                   │   └── package-info.java
-│   │                   ├── repository/                         # 【分层】出站适配
-│   │                   │   └── package-info.java
-│   │                   └── service/                            # 【分层】应用服务
-│   │                       └── package-info.java
-│   └── test/                                                     # 测试根（本模板默认无示例测试类，按业务补充）
-│       └── java/                                                 # 测试 Java 根（建议与 main 包结构对称）
 ├── .gitignore                                                    # Git 忽略规则（构建产物、IDE 文件等）
 ├── AGENTS.md                                                     # AI 协作主协议（闭环流程与门禁）
 ├── func.md                                                       # 功能资产清单（变更前检索、变更后登记）
@@ -95,23 +80,53 @@
 
 ## `src` 目录建议结构（建议）
 
-以下为**建议**采用的 Java 工程布局，便于与本模板中的分层约定（见 `docs/01-architecture/architecture-constraints.md`）一致；落地时可将 `<根包>` 替换为实际包名（如 `com.company.project`）。
+以下为**建议**采用的 Java / Spring Boot 工程布局：在 [`docs/01-architecture/architecture-constraints.md`](docs/01-architecture/architecture-constraints.md) 的分层（controller → service → domain，repository → domain）之上，增加常见的**横切包**（`config`、`common` 等）与**资源文件**约定。将 `<根包>` 替换为实际包名（如 `com.company.project`）。
+
+**约定摘要：** `common`、`config` 仅放通用能力与装配代码，**不承载核心业务规则**；业务状态与规则仍在 `domain` / `service`。团队可将全局异常处理类放在 `exception` 子包，或归入 `controller`（二选一、保持全项目一致即可）。
 
 ```text
-src/                               # Maven 标准源码根（main 运行代码 + test 测试代码）
-├── main/                          # 生产环境构建所需的代码与资源
-│   ├── java/                      # Java 源码目录
-│   │   └── <根包>/                # 你的应用根包（与集团/域名约定一致）
-│   │       ├── controller/        # 【建议】控制器与入站适配（HTTP 等）
-│   │       ├── service/           # 【建议】业务编排与用例实现
-│   │       ├── domain/            # 【建议】领域模型、领域规则
-│   │       └── repository/        # 【建议】持久化、外部系统适配（Mapper/Client 等）
-│   └── resources/                 # 【建议】application.yml、静态资源等（按需）
-└── test/                          # 测试源码与资源（默认与 main 对称）
-    └── java/                      # 测试用 Java 源码目录
-        └── <根包>/                # 【建议】与 main 使用同一根包，便于测试组织
-            └── ...                # 【建议】按业务或分层划分子包，放单测与集成测试（需自动结构校验时可自行引入 ArchUnit 等）
+src/                                          # Maven 标准源码根
+├── main/
+│   ├── java/
+│   │   └── <根包>/
+│   │       ├── <AppName>Application.java    # 【建议】Spring Boot 启动类（如 OrderApplication.java）
+│   │       ├── config/                      # 【建议】@Configuration、Bean 装配、框架扩展（Web/WebClient、异步线程池等）
+│   │       │   ├── package-info.java      # 【可选】包职责说明（与 Checkstyle/团队规范一致时可保留）
+│   │       │   └── ...                      # 如 *Configuration.java、*Properties.java（绑定 configuration-metadata 时配合 spring-boot-configuration-processor）
+│   │       ├── common/                      # 【建议】跨层复用：常量、泛型工具、与协议相关的轻量模型（非领域实体）
+│   │       │   ├── package-info.java      # 【可选】
+│   │       │   ├── constant/              # 【可选】错误码前缀、系统级常量（避免与业务枚举混放）
+│   │       │   ├── util/                   # 【可选】无状态工具类
+│   │       │   └── api/                    # 【可选】统一响应封装 ApiResult、分页请求包装等（仅表达协议，不含业务规则）
+│   │       ├── exception/                  # 【可选】BusinessException、全局异常处理器 GlobalExceptionHandler 等
+│   │       │   └── package-info.java      # 【可选】
+│   │       ├── controller/                 # 【建议】HTTP 等入站适配、参数校验
+│   │       │   └── package-info.java      # 【可选】
+│   │       ├── service/                   # 【建议】用例编排与事务边界
+│   │       │   └── package-info.java      # 【可选】
+│   │       ├── domain/                    # 【建议】实体、值对象、领域服务、领域事件
+│   │       │   └── package-info.java      # 【可选】
+│   │       └── repository/                # 【建议】JPA/MyBatis/Feign 等出站适配
+│   │           └── package-info.java      # 【可选】
+│   └── resources/                         # 【建议】配置文件与静态资源
+│       ├── application.yml                # 【建议】主配置（或 application.properties）
+│       ├── application-local.yml          # 【可选】本地覆盖（勿提交敏感信息；由 .gitignore 控制）
+│       ├── application-dev.yml            # 【可选】开发环境
+│       ├── application-prod.yml          # 【可选】生产环境
+│       ├── static/                        # 【可选】静态资源根（前后端分离项目可空置）
+│       ├── templates/                     # 【可选】服务端模板（Thymeleaf 等）
+│       └── logback-spring.xml             # 【可选】日志配置（需与 spring-boot-starter-logging 等搭配）
+└── test/
+    ├── java/
+    │   └── <根包>/
+    │       ├── ...                         # 【建议】与 main 对称子包；可按分层或业务域划分单测/集成测试
+    │       └── support/                    # 【可选】测试构建器、随机数据、@TestConfiguration 等
+    └── resources/
+        ├── application-test.yml           # 【建议】测试环境配置（数据源内存化、端口随机等）
+        └── data/                          # 【可选】测试数据集、JSON/SQL 片段
 ```
+
+以上文件名（如 `application-test.yml`）可按团队习惯微调，但建议 **main / test 的 profile 与资源目录** 保持可预测命名，便于 CI 与本地一键运行。
 
 ## 推荐使用流程
 
