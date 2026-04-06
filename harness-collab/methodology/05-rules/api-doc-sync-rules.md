@@ -18,7 +18,8 @@
 
 ## 文档要求
 
-- 使用统一模板：`harness-collab/methodology/04-api-standards/api-doc-template.md`
+- 使用统一模板：`harness-collab/api-doc/templates/api-doc-template.md`
+- 接口正文目录：`harness-collab/api-doc/modules/`（按模块）
 - data 为对象时，必须展开全部子字段（`data.xxx` / `data.obj.xxx`）
 - 功能说明需覆盖核心业务逻辑和时序
 

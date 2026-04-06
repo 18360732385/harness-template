@@ -44,7 +44,7 @@ alwaysApply: true
 
 ## 5. 文档同步约束
 
-- API 入参、出参、URL、Method 变化必须同步 `harness-collab/methodology/04-api-standards/`。
+- API 入参、出参、URL、Method 变化必须同步 **`harness-collab/api-doc/`**（建议按模块写在 `api-doc/modules/` 下，格式见 `api-doc/templates/api-doc-template.md`）。
 - 新增/修改服务能力必须同步 `harness-collab/func.md`。
 - 结构性改动必须同步 `harness-collab/methodology/01-architecture/`。
 
@@ -67,4 +67,4 @@ alwaysApply: true
 - 执行计划：`harness-collab/exec-plans/*`
 - 实施代码：`src/main/java/*`
 - 测试代码：`src/test/java/*`
-- 文档更新：`harness-collab/methodology/*`（方法论文档：治理、架构、API 等）+ `harness-collab/func.md`
+- 文档更新：`harness-collab/methodology/*`（治理、架构、工程等）+ **`harness-collab/api-doc/`**（接口说明，按模块）+ `harness-collab/func.md`

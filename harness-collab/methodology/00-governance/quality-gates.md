@@ -36,7 +36,7 @@
 - 分层与依赖方向符合 `harness-collab/methodology/01-architecture/architecture-constraints.md`（通过评审与治理闭环保证；本模板无内置自动结构测试）。
 - 单元测试与集成测试通过。
 - 覆盖率检查完成（JaCoCo，模板默认 `warn` 语义，可按项目阶段切换到 `enforce`）。
-- API 变更文档同步完成。
+- API 变更文档同步完成（正文位于 `harness-collab/api-doc/`，格式见 `api-doc/templates/api-doc-template.md`）。
 - `harness-collab/func.md` 功能资产同步完成。
 - 风险与回滚策略已记录（必须落在 `harness-collab/exec-plans` 文档中）。
 

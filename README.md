@@ -43,8 +43,9 @@
 │   │   ├── 01-architecture/                         # architecture-constraints.md 等
 │   │   ├── 02-engineering/                          # dev-workflow、retrofit-playbook
 │   │   ├── 03-ai-workflow/                          # ai-delivery-playbook.md
-│   │   ├── 04-api-standards/                        # api-doc-template.md
+│   │   ├── 04-api-standards/                        # 占位跳转 → api-doc/
 │   │   └── 05-rules/                                # 与 .cursor/rules 同步的 Markdown 副本
+│   ├── api-doc/                                     # 接口文档：templates/ + modules/（按模块）
 │   ├── product-specs/                               # 产品/需求规格模板与实例
 │   │   └── templates/
 │   ├── design-docs/                                 # 技术设计模板与实例
@@ -117,7 +118,7 @@ src/
 3. 在 `harness-collab/exec-plans/` 拆分可执行计划。
 4. 按 `AGENTS.md` / `harness-collab/AGENTS.md` 流程执行开发与测试。
 5. 通过质量门禁（Checkstyle、SpotBugs、测试、JaCoCo 等；分层依赖依文档与评审落实）。
-6. 同步 API 与功能文档（`harness-collab/methodology/04-api-standards`、`harness-collab/func.md`）。
+6. 同步 API 与功能文档（`harness-collab/api-doc`、`harness-collab/func.md`）。
 
 ## 模板使用入口导航
 

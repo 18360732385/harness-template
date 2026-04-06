@@ -11,8 +11,8 @@
 | 治理阶段 | 行为摘要 | 建议复制的 `harness-collab/` 子集 | Maven 命令（示例） | JaCoCo 语义 |
 |---|---|---|---|---|
 | **observe** | 采集问题，不拦截发布 | `AGENTS.md`、`func.md`、`product-specs` + `design-docs` + `exec-plans` 模板；[`methodology/03-ai-workflow`](../03-ai-workflow/ai-delivery-playbook.md) | `mvn clean verify` 或显式 `mvn clean verify -Pharness-legacy` | 低阈值、`haltOnFailure=false`（legacy 默认） |
-| **warn** | 告警进治理台账，逐步收敛 | 上述 + [`methodology/00-governance`](../00-governance/quality-gates.md) + [`01-architecture`](../01-architecture/architecture-constraints.md) + [`04-api-standards`](../04-api-standards/api-doc-template.md) | 同上（仍为 legacy 或团队自调 properties） | 保持 warn，计划修复缺口 |
-| **enforce** | 不达标阻塞合入 | 完整 **methodology 00–05** + 根 `.cursor/rules`（或 `cursor-rules` 副本） | `mvn clean verify -Pharness-new`（新项目或治理完成后） | 高阈值、`haltOnFailure=true` |
+| **warn** | 告警进治理台账，逐步收敛 | 上述 + [`methodology/00-governance`](../00-governance/quality-gates.md) + [`01-architecture`](../01-architecture/architecture-constraints.md) + [`api-doc`](../../api-doc/README.md)（模板 [`api-doc/templates/api-doc-template.md`](../../api-doc/templates/api-doc-template.md)） | 同上（仍为 legacy 或团队自调 properties） | 保持 warn，计划修复缺口 |
+| **enforce** | 不达标阻塞合入 | 完整 **methodology 00–05** + **`api-doc/`** + 根 `.cursor/rules`（或 `cursor-rules` 副本） | `mvn clean verify -Pharness-new`（新项目或治理完成后） | 高阈值、`haltOnFailure=true` |
 
 **仅 AI 协作流、暂不接治理模板时** 的最小复制包：`harness-collab/AGENTS.md`、`func.md`、`product-specs/`、`design-docs/`、`exec-plans/`，以及任选 `.cursor/rules` 或 `cursor-rules/`；可不复制 `methodology/00-governance`。
 

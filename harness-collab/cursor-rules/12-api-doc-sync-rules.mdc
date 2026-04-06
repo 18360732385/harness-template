@@ -19,7 +19,8 @@ alwaysApply: true
 - 请求方式变更
 
 ## 文档格式约束
-- 使用统一模板：`harness-collab/methodology/04-api-standards/api-doc-template.md`
+- 使用统一模板：`harness-collab/api-doc/templates/api-doc-template.md`
+- 具体接口说明文件：`harness-collab/api-doc/modules/` 下按业务模块新增或更新 `.md`
 - 必须包含：接口功能、业务流程、请求参数、响应参数。
 - `data` 为对象时，必须完整展开所有子字段：`data.xxx`、`data.obj.xxx`。
 

@@ -37,7 +37,7 @@
 ## 6. 验收标准
 - 功能验收（Given/When/Then）：
 - 质量验收（性能/稳定性/可观测）：
-- 文档验收（API/`harness-collab/func.md`/设计）：
+- 文档验收（`harness-collab/api-doc/`、`harness-collab/func.md`、设计）：
 
 ## 7. 风险与约束
 - 风险项：
