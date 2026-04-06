@@ -54,6 +54,6 @@
 
 ## 12. 完成定义（DoD）
 - [ ] 已完成需求评审并冻结范围
-- [ ] 已输出 `design-docs`
-- [ ] 已输出 `exec-plans`
+- [ ] 已输出 `harness-collab/design-docs`
+- [ ] 已输出 `harness-collab/exec-plans`
 - [ ] 已定义验收标准并可测试

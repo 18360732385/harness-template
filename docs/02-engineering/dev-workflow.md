@@ -7,7 +7,7 @@
 3. 执行计划：拆分任务并定义验证方式。
 4. 编码实现：按 plan_vs_impl 严格对齐实现。
 5. 测试验证：单元、集成、回归。
-6. 文档同步：API 文档与 `func.md`。
+6. 文档同步：API 文档与 `harness-collab/func.md`。
 7. 复盘沉淀：问题归因与规范更新。
 
 ## 分支建议
@@ -25,9 +25,9 @@
 ## 提交前检查列表
 
 - [ ] `mvn clean verify` 通过。
-- [ ] `exec-plans` 中 plan_vs_impl 已更新。
+- [ ] `harness-collab/exec-plans` 中 plan_vs_impl 已更新。
 - [ ] API 文档已同步（如有接口变更）。
-- [ ] `func.md` 已同步（如有能力变更）。
+- [ ] `harness-collab/func.md` 已同步（如有能力变更）。
 - [ ] 风险与回滚内容已填写。
 
 ## PR 评审检查点

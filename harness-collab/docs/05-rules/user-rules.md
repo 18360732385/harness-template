@@ -2,9 +2,10 @@
 
 ## 权威来源与同步规则
 
-- 权威来源：`.cursor/rules/*.mdc`
+- 权威来源：仓库根目录 `.cursor/rules/*.mdc`
+- 本文件路径：`harness-collab/docs/05-rules/user-rules.md`
 - 本目录用途：跨仓复制模板与阅读参考
-- 同步要求：若规则发生变更，必须先更新 `.cursor/rules/*.mdc`，再同步本目录
+- 同步要求：若规则发生变更，必须先更新 `.cursor/rules/*.mdc`，再同步 `harness-collab/docs/05-rules/`
 
 ## 适用范围
 
@@ -23,11 +24,11 @@
 
 ## 强制约束
 
-1. 开发前必须读取 `func.md`，优先复用已有服务能力。
+1. 开发前必须读取 `harness-collab/func.md`（或团队约定的 func 权威路径），优先复用已有服务能力。
 2. 先输出设计与计划，再进入实现。
 3. 实现必须遵循 plan_vs_impl。
 4. 任何 API 变更必须同步接口文档。
-5. 每次开发完成后必须同步 `func.md`。
+5. 每次开发完成后必须同步 func 权威路径（本模板为 `harness-collab/func.md`）。
 
 ## 执行流程
 
@@ -43,4 +44,4 @@
 
 - 本地验证命令：`mvn clean verify` 通过。
 - 设计/计划/实现映射清晰。
-- API 文档与 `func.md` 同步完成。
+- API 文档与 func 权威路径同步完成。

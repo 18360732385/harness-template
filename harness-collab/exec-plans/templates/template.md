@@ -60,6 +60,6 @@
 
 - [ ] `mvn clean verify` 通过
 - [ ] API 文档已同步
-- [ ] `func.md` 已同步
+- [ ] `harness-collab/func.md` 已同步
 - [ ] 风险与回滚字段已完整填写
 - [ ] 发布检查项已全部通过

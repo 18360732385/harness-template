@@ -1,5 +1,7 @@
 # 功能资产总表（func.md）
 
+> **路径：** 本模板以 `harness-collab/func.md` 为权威；迁入他仓时参见根目录 `harness-collab/README.md` 中的 func 约定。
+
 ## 使用说明
 
 - 任何业务代码开发前，先查询本文件，评估复用可能性。
@@ -42,3 +44,4 @@
 |---|---|---|
 | 2026-04-06 | AI Agent | 初始化功能资产模板 |
 | 2026-04-06 | AI Agent | 移除内置 ArchUnit 分层结构测试与相关 pom 配置；分层约束以 `docs/01-architecture/architecture-constraints.md` 及评审/治理为主 |
+| 2026-04-06 | AI Agent | AI 协作产出归集至 `harness-collab/`；本文件路径变更为 `harness-collab/func.md` |

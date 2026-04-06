@@ -2,7 +2,8 @@
 
 ## 权威来源与同步规则
 
-- 权威来源：`.cursor/rules/12-api-doc-sync-rules.mdc`
+- 权威来源：仓库根目录 `.cursor/rules/12-api-doc-sync-rules.mdc`
+- 本文件路径：`harness-collab/docs/05-rules/api-doc-sync-rules.md`
 - 本文件定位：可复制的文档版本
 - 维护原则：先改 `.mdc`，再同步本文件
 
@@ -23,8 +24,8 @@
 
 ## 与功能资产联动
 
-- 接口新增/下线时，必须同步更新 `func.md`。
-- 接口语义变化时，必须更新 `func.md` 对应方法说明与影响范围。
+- 接口新增/下线时，必须同步更新 `harness-collab/func.md`（或团队约定的 func 权威路径）。
+- 接口语义变化时，必须更新上述 func 中对应方法说明与影响范围。
 
 ## 交付门禁
 

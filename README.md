@@ -7,14 +7,10 @@
 
 ## 目录总览
 
-- `AGENTS.md`：AI 协作主协议（需求、设计、计划、实现、测试、复盘）。
-- `func.md`：功能资产登记（变更前先检索复用）。
-- `docs/`：治理、架构、工程流程、AI 工作流、API 标准。
-- `docs/05-rules/`：可直接复用的 user/project rules 文本版本。
-- `product-specs/`：产品规格文档模板与实例。
-- `design-docs/`：技术设计文档模板与实例。
-- `exec-plans/`：执行计划模板与实例。
-- `.cursor/rules/`：User Rules 与 Java Project Rules。
+- `AGENTS.md`：入口，链向完整协议 `harness-collab/AGENTS.md`。
+- `harness-collab/`：AI 协作输入输出归集区（规格、设计、计划、`func.md`、AI 流程与规则 Markdown 镜像、可选 `cursor-rules` 副本）。
+- `docs/`：工程治理、架构、研发流程、API 标准（不与 AI 产出树混排，便于迁入存量库时少冲突）。
+- `.cursor/rules/`：Cursor 权威规则（`.mdc`）；复制到其它仓库时参见 `harness-collab/README.md`。
 - `config/`：Checkstyle 与 SpotBugs 配置。
 - `src/main/java/.../controller|service|domain|repository`：分层包骨架占位；落地时可按建议结构补充 `config`、`common` 等横切包。
 - `src/test/java/`：测试根目录（本模板无强制示例类；按业务补充单测与集成测试）。
@@ -24,56 +20,52 @@
 下列树状结构列出**当前仓库**各目录及主要文件（模板快照；**不含** `.git/` 与本地 **`target/`**（Maven 构建产出，一般不入库）。若本地执行过 `mvn` 构建，根下会出现 `target/`，可整体忽略。
 
 ```text
-├── .cursor/                                                      # Cursor IDE 配置与规则
-│   └── rules/                                                    # 持久化 Rules（.mdc，供 AI 与团队对齐）
-│       ├── 01-user-rules.mdc                                    # 用户协作：需求/设计/计划/测试与文档门禁
-│       ├── 10-java-project-rules.mdc                            # Java 工程：分层、编码、可测试性
-│       ├── 11-testing-and-quality-rules.mdc                     # 测试策略与质量门禁（verify、JaCoCo 等）
-│       └── 12-api-doc-sync-rules.mdc                             # API 变更时文档与 func.md 同步
-├── .github/                                                      # GitHub 仓库级配置
-│   └── workflows/                                                # GitHub Actions 工作流目录
-│       └── ci-verify.yml                                        # CI：Maven verify / 矩阵档等（见文件内说明）
-├── config/                                                       # 质量工具本地配置（不依赖默认随包路径）
-│   ├── checkstyle/                                               # Checkstyle 规则集目录
-│   │   ├── checkstyle.xml                                       # 默认 Checkstyle 配置（与 pom 绑定）
-│   │   └── checkstyle-strict.xml                                # 更严格规则集（可按 profile 切换）
-│   └── spotbugs/                                                 # SpotBugs 辅助配置
-│       └── exclude.xml                                          # 误报/基线类排除清单（存量渐进治理用）
-├── design-docs/                                                  # 技术设计文档（实例与模板）
-│   └── templates/                                                # 设计文档模板目录
-│       └── template.md                                          # 标准技术设计文档骨架
-├── docs/                                                         # 可读文档：治理、架构、流程、规范
-│   ├── 00-governance/                                            # 治理：门禁、基线、工具模板说明
-│   │   ├── legacy-baseline.md                                   # 历史项目接入基线与阶段策略
-│   │   ├── quality-gates.md                                      # 质量门禁分档（observe/warn/enforce）
-│   │   └── quality-tooling-templates.md                         # Checkstyle/SpotBugs/JaCoCo 等说明与引用
-│   ├── 01-architecture/                                          # 架构约束与分层约定
-│   │   └── architecture-constraints.md                          # 分层边界、依赖方向（文档约定；无内置自动结构测试）
-│   ├── 02-engineering/                                           # 工程实践与改造手册
-│   │   ├── dev-workflow.md                                       # 本地开发、分支与合入前置检查
-│   │   └── retrofit-playbook.md                                  # 存量系统渐进接入 Harness 的步骤
-│   ├── 03-ai-workflow/                                           # AI 辅助交付流程
-│   │   └── ai-delivery-playbook.md                               # 从需求到复盘的可复制工作流
-│   ├── 04-api-standards/                                        # 对外/对内接口文档规范
-│   │   └── api-doc-template.md                                  # 接口说明模板（含 data 子字段展开要求）
-│   └── 05-rules/                                                 # 与 .cursor/rules 对齐的 Markdown 副本（可复制到 docs）
-│       ├── api-doc-sync-rules.md                                 # API 文档同步规则（文本版）
-│       ├── java-project-rules.md                                  # Java 分层与编码规则（文本版）
-│       ├── testing-and-quality-rules.md                          # 测试与质量规则（文本版）
-│       └── user-rules.md                                         # 用户协作规则（文本版）
-├── exec-plans/                                                    # 执行计划：任务分解与验收条目
-│   └── templates/                                                # 执行计划模板目录
-│       └── template.md                                          # 单计划文档骨架（映射需求/设计/验收）
-├── product-specs/                                                 # 产品/需求规格
-│   └── templates/                                                # 规格模板目录
-│       ├── retrofit-template.md                                  # 历史项目改造类需求模板
-│       └── template.md                                          # 通用产品规格模板
-├── src/                                                          # 源码与测试根目录（Maven 标准布局）
-├── .gitignore                                                    # Git 忽略规则（构建产物、IDE 文件等）
-├── AGENTS.md                                                     # AI 协作主协议（闭环流程与门禁）
-├── func.md                                                       # 功能资产清单（变更前检索、变更后登记）
-├── pom.xml                                                       # Maven 工程定义：父 POM、插件、profiles、属性
-└── README.md                                                     # 本文件：仓库说明与快速上手
+├── .cursor/                                         # Cursor IDE 配置与规则
+│   └── rules/                                       # 持久化 Rules（.mdc，供 AI 与团队对齐）
+│       ├── 01-user-rules.mdc                        # 用户协作：需求/设计/计划/测试与文档门禁
+│       ├── 10-java-project-rules.mdc                # Java 工程：分层、编码、可测试性
+│       ├── 11-testing-and-quality-rules.mdc         # 测试策略与质量门禁（verify、JaCoCo 等）
+│       └── 12-api-doc-sync-rules.mdc                # API 变更时文档与 func.md 同步
+├── .github/                                         # GitHub 仓库级配置
+│   └── workflows/                                   # GitHub Actions 工作流目录
+│       └── ci-verify.yml                            # CI：Maven verify / 矩阵档等（见文件内说明）
+├── config/                                          # 质量工具本地配置（不依赖默认随包路径）
+│   ├── checkstyle/                                  # Checkstyle 规则集目录
+│   │   ├── checkstyle.xml                           # 默认 Checkstyle 配置（与 pom 绑定）
+│   │   └── checkstyle-strict.xml                    # 更严格规则集（可按 profile 切换）
+│   └── spotbugs/                                    # SpotBugs 辅助配置
+│       └── exclude.xml                              # 误报/基线类排除清单（存量渐进治理用）
+├── docs/                                            # 工程文档：治理、架构、工程流程、API（无 AI 产出子树）
+│   ├── 00-governance/                               # 治理：门禁、基线、工具模板说明
+│   │   ├── legacy-baseline.md                       # 历史项目接入基线与阶段策略
+│   │   ├── quality-gates.md                         # 质量门禁分档（observe/warn/enforce）
+│   │   └── quality-tooling-templates.md             # Checkstyle/SpotBugs/JaCoCo 等说明与引用
+│   ├── 01-architecture/                             # 架构约束与分层约定
+│   │   └── architecture-constraints.md              # 分层边界、依赖方向（文档约定；无内置自动结构测试）
+│   ├── 02-engineering/                              # 工程实践与改造手册
+│   │   ├── dev-workflow.md                          # 本地开发、分支与合入前置检查
+│   │   └── retrofit-playbook.md                     # 存量系统渐进接入 Harness 的步骤
+│   └── 04-api-standards/                            # 对外/对内接口文档规范
+│       └── api-doc-template.md                      # 接口说明模板（含 data 子字段展开要求）
+├── harness-collab/                                  # AI 协作归集：规格/设计/计划/func/规则镜像（可整体复制到他仓）
+│   ├── README.md                                    # 迁入说明、func 优先级、.mdc 复制方式
+│   ├── AGENTS.md                                    # 完整 AI 协作协议
+│   ├── func.md                                      # 功能资产总表（本模板权威路径；见 README 中「func 优先级」）
+│   ├── product-specs/                               # 产品/需求规格模板与实例
+│   │   └── templates/                               # template.md、retrofit-template.md
+│   ├── design-docs/                                 # 技术设计模板与实例
+│   │   └── templates/
+│   ├── exec-plans/                                  # 执行计划模板与实例
+│   │   └── templates/
+│   ├── docs/
+│   │   ├── 03-ai-workflow/                          # AI 交付手册
+│   │   │   └── ai-delivery-playbook.md
+│   │   └── 05-rules/                                # 与 .cursor/rules 同步的 Markdown 副本
+│   └── cursor-rules/                                # .mdc 副本 + README（权威仍为根目录 .cursor/rules）
+├── src/                                             # 源码与测试根目录（Maven 标准布局）
+├── AGENTS.md                                        # 协议入口 → harness-collab/AGENTS.md
+├── pom.xml
+└── README.md
 ```
 
 （若本地已 `git init`，还会有 `.git/` 目录；上表未逐一枚举其他编辑器或 OS 产生的隐藏/临时文件。）
@@ -85,73 +77,73 @@
 **约定摘要：** `common`、`config` 仅放通用能力与装配代码，**不承载核心业务规则**；业务状态与规则仍在 `domain` / `service`。团队可将全局异常处理类放在 `exception` 子包，或归入 `controller`（二选一、保持全项目一致即可）。
 
 ```text
-src/                                          # Maven 标准源码根
+src/                                       
 ├── main/
 │   ├── java/
 │   │   └── <根包>/
-│   │       ├── <AppName>Application.java    # 【建议】Spring Boot 启动类（如 OrderApplication.java）
-│   │       ├── config/                      # 【建议】@Configuration、Bean 装配、框架扩展（Web/WebClient、异步线程池等）
-│   │       │   ├── package-info.java      # 【可选】包职责说明（与 Checkstyle/团队规范一致时可保留）
-│   │       │   └── ...                      # 如 *Configuration.java、*Properties.java（绑定 configuration-metadata 时配合 spring-boot-configuration-processor）
-│   │       ├── common/                      # 【建议】跨层复用：常量、泛型工具、与协议相关的轻量模型（非领域实体）
-│   │       │   ├── package-info.java      # 【可选】
-│   │       │   ├── constant/              # 【可选】错误码前缀、系统级常量（避免与业务枚举混放）
-│   │       │   ├── util/                   # 【可选】无状态工具类
-│   │       │   └── api/                    # 【可选】统一响应封装 ApiResult、分页请求包装等（仅表达协议，不含业务规则）
-│   │       ├── exception/                  # 【可选】BusinessException、全局异常处理器 GlobalExceptionHandler 等
-│   │       │   └── package-info.java      # 【可选】
-│   │       ├── controller/                 # 【建议】HTTP 等入站适配、参数校验
-│   │       │   └── package-info.java      # 【可选】
-│   │       ├── service/                   # 【建议】用例编排与事务边界
-│   │       │   └── package-info.java      # 【可选】
-│   │       ├── domain/                    # 【建议】实体、值对象、领域服务、领域事件
-│   │       │   └── package-info.java      # 【可选】
-│   │       └── repository/                # 【建议】JPA/MyBatis/Feign 等出站适配
-│   │           └── package-info.java      # 【可选】
-│   └── resources/                         # 【建议】配置文件与静态资源
-│       ├── application.yml                # 【建议】主配置（或 application.properties）
-│       ├── application-local.yml          # 【可选】本地覆盖（勿提交敏感信息；由 .gitignore 控制）
-│       ├── application-dev.yml            # 【可选】开发环境
-│       ├── application-prod.yml          # 【可选】生产环境
-│       ├── static/                        # 【可选】静态资源根（前后端分离项目可空置）
-│       ├── templates/                     # 【可选】服务端模板（Thymeleaf 等）
-│       └── logback-spring.xml             # 【可选】日志配置（需与 spring-boot-starter-logging 等搭配）
+│   │       ├── <AppName>Application.java      #  Spring Boot 启动类（如 OrderApplication.java）
+│   │       ├── config/                        # 【建议】@Configuration、Bean 装配、框架扩展（Web/WebClient、异步线程池等）
+│   │       │   ├── package-info.java          # 【可选】包职责说明（与 Checkstyle/团队规范一致时可保留）
+│   │       │   └── ...                        # 如 *Configuration.java、*Properties.java（绑定 configuration-metadata 时配合 spring-boot-configuration-processor）
+│   │       ├── common/                        # 【建议】跨层复用：常量、泛型工具、与协议相关的轻量模型（非领域实体）
+│   │       │   ├── package-info.java      
+│   │       │   ├── constant/                  # 【可选】错误码前缀、系统级常量（避免与业务枚举混放）
+│   │       │   ├── util/                      # 【可选】无状态工具类
+│   │       │   └── api/                       # 【可选】统一响应封装 ApiResult、分页请求包装等（仅表达协议，不含业务规则）
+│   │       ├── exception/                     # 【可选】BusinessException、全局异常处理器 GlobalExceptionHandler 等
+│   │       │   └── package-info.java      
+│   │       ├── controller/                    # 【建议】HTTP 等入站适配、参数校验
+│   │       │   └── package-info.java      
+│   │       ├── service/                       # 【建议】用例编排与事务边界
+│   │       │   └── package-info.java      
+│   │       ├── domain/                        # 【建议】实体、值对象、领域服务、领域事件
+│   │       │   └── package-info.java      
+│   │       └── repository/                    # 【建议】JPA/MyBatis/Feign 等出站适配
+│   │           └── package-info.java      
+│   └── resources/                             #  配置文件与静态资源
+│       ├── application.yml                    
+│       ├── application-test.yml               
+│       ├── application-dev.yml                
+│       ├── application-prod.yml               
+│       ├── static/                            # 【可选】静态资源根（前后端分离项目可空置）
+│       ├── templates/                         # 【可选】服务端模板（Thymeleaf 等）
+│       └── logback-spring.xml                 # 【可选】日志配置（需与 spring-boot-starter-logging 等搭配）
 └── test/
     ├── java/
     │   └── <根包>/
-    │       ├── ...                         # 【建议】与 main 对称子包；可按分层或业务域划分单测/集成测试
-    │       └── support/                    # 【可选】测试构建器、随机数据、@TestConfiguration 等
+    │       ├── ...                            # 【建议】与 main 对称子包；可按分层或业务域划分单测/集成测试
+    │       └── support/                       # 【可选】测试构建器、随机数据、@TestConfiguration 等
     └── resources/
-        ├── application-test.yml           # 【建议】测试环境配置（数据源内存化、端口随机等）
-        └── data/                          # 【可选】测试数据集、JSON/SQL 片段
+        ├── application-test.yml               # 【建议】测试环境配置（数据源内存化、端口随机等）
+        └── data/                              # 【可选】测试数据集、JSON/SQL 片段
 ```
 
-以上文件名（如 `application-test.yml`）可按团队习惯微调，但建议 **main / test 的 profile 与资源目录** 保持可预测命名，便于 CI 与本地一键运行。
+以上文件名可按团队习惯调整，但建议 **main / test 的 profile 与资源目录** 保持可预测命名，便于 CI 与本地一键运行。
 
 ## 推荐使用流程
 
-1. 在 `product-specs/` 编写需求规格。
-2. 在 `design-docs/` 输出技术设计。
-3. 在 `exec-plans/` 拆分可执行计划。
-4. 按 `AGENTS.md` 流程执行开发与测试。
+1. 在 `harness-collab/product-specs/` 编写需求规格。
+2. 在 `harness-collab/design-docs/` 输出技术设计。
+3. 在 `harness-collab/exec-plans/` 拆分可执行计划。
+4. 按 `AGENTS.md` / `harness-collab/AGENTS.md` 流程执行开发与测试。
 5. 通过质量门禁（Checkstyle、SpotBugs、测试、JaCoCo 等；分层依赖依文档与评审落实）。
-6. 同步 API 与功能文档（`docs/04-api-standards`、`func.md`）。
+6. 同步 API 与功能文档（`docs/04-api-standards`、`harness-collab/func.md`）。
 
 ## 模板使用入口导航
 
 ### 第一步：明确规则与流程
-- 先读：`AGENTS.md`
+- 先读：`AGENTS.md` → `harness-collab/AGENTS.md`
 - 再读：`.cursor/rules/*.mdc`（权威规则）
-- 参考：`docs/05-rules/*`（可复制副本）
+- 参考：`harness-collab/docs/05-rules/*`（Markdown 副本）
 
 ### 第二步：产出三大核心文档
-- 需求规格：`product-specs/templates/template.md`
-- 技术设计：`design-docs/templates/template.md`
-- 执行计划：`exec-plans/templates/template.md`
+- 需求规格：`harness-collab/product-specs/templates/template.md`
+- 技术设计：`harness-collab/design-docs/templates/template.md`
+- 执行计划：`harness-collab/exec-plans/templates/template.md`
 
 ### 第三步：执行与验收
 - 研发流程：`docs/02-engineering/dev-workflow.md`
-- AI 交付：`docs/03-ai-workflow/ai-delivery-playbook.md`
+- AI 交付：`harness-collab/docs/03-ai-workflow/ai-delivery-playbook.md`
 - 门禁治理：`docs/00-governance/quality-gates.md`
 - 统一验证：`mvn clean verify`
 
@@ -189,4 +181,4 @@ src/                                          # Maven 标准源码根
 ## 说明
 
 - 当前仓库已包含可直接执行的正式配置：`.cursor/rules/*.mdc`、`pom.xml`、`config/*`、`src/main/java/*`（测试代码按业务在 `src/test/java/` 补充）。
-- `.cursor/rules/*.mdc` 是规则权威来源，`docs/05-rules/` 与 `docs/00-governance/quality-tooling-templates.md` 为可复制模板副本。
+- `.cursor/rules/*.mdc` 是规则权威来源；`harness-collab/docs/05-rules/` 为 Markdown 同步副本；`harness-collab/cursor-rules/` 为整包复制用 `.mdc` 副本（修改请以根目录 `.cursor/rules` 为准并同步）。工程工具说明见 `docs/00-governance/quality-tooling-templates.md`。

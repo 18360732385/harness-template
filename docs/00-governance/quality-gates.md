@@ -28,8 +28,8 @@
 - 单元测试与集成测试通过。
 - 覆盖率检查完成（JaCoCo，模板默认 `warn` 语义，可按项目阶段切换到 `enforce`）。
 - API 变更文档同步完成。
-- `func.md` 功能资产同步完成。
-- 风险与回滚策略已记录（必须落在 `exec-plans` 文档中）。
+- `harness-collab/func.md` 功能资产同步完成。
+- 风险与回滚策略已记录（必须落在 `harness-collab/exec-plans` 文档中）。
 
 ## 建议执行顺序
 
@@ -44,6 +44,6 @@
 
 ## 风险与回滚可检查闭环
 
-- 每个任务必须在 `exec-plans` 中填写“风险与回滚”并可审计。
-- 参考模板：`exec-plans/templates/template.md`
+- 每个任务必须在 `harness-collab/exec-plans` 中填写“风险与回滚”并可审计。
+- 参考模板：`harness-collab/exec-plans/templates/template.md`
 - 评审时需核对以下字段：触发条件、影响范围、回滚步骤、负责人、验证结果。
