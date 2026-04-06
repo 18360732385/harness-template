@@ -1,0 +1,22 @@
+---
+description: 存量迁入 harness 后，历史内部规范与 harness-collab 冲突时的默认优先（请复制到仓库根 .cursor/rules/ 并改名为 20-harness-precedence-legacy.mdc）
+globs:
+alwaysApply: true
+---
+
+# Harness 优先（存量项目）
+
+## 适用范围
+
+业务仓库已引入 `harness-collab/`，且存在与历史内部文档、旧约定不一致的情形。
+
+## 冲突时
+
+1. **默认**以 `harness-collab/AGENTS.md`、`harness-collab/05-methodology/`（流程与分层等）、`harness-collab/04-api-docs/`（接口说明与模板）为准（含 plan_vs_impl、func 同步等）。
+2. **仅当**团队已在 `harness-collab/05-methodology/00-governance/legacy-baseline.md`（或 README 写明的等价路径）中**明确登记**的豁免可偏离；未登记则不得沿用「老规范」对抗 harness。
+3. **`func.md` 权威路径**以 `harness-collab/README.md` 中的约定为准；多路径时先读 README 再读 func。
+4. **当前对话中用户给出的明确指令**优先于本条（与 `harness-collab/AGENTS.md` §2.1 一致）。
+
+## 输出物
+
+仍按 `harness-collab/AGENTS.md`：先 specifications / design / exec-plan（含可追溯 ID），再改代码与测试。

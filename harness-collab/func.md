@@ -7,13 +7,13 @@
 - 任何业务代码开发前，先查询本文件，评估复用可能性。
 - 新增能力后，必须补录服务、方法、参数、返回值、调用方。
 - 修改能力后，必须更新对应条目与版本记录。
-- **关联追溯**：条目与 `product-specs` 中的 **REQ-…**、以及 **`api-doc/modules/`** 下具体接口说明路径（若有）保持一致，便于 plan_vs_impl 审计。
+- **关联追溯**：条目与 `01-product-specs` 中的 **REQ-…**、以及 **`04-api-docs/modules/`** 下具体接口说明路径（若有）保持一致，便于 plan_vs_impl 审计。
 
 ## Service 层
 
 | 服务名 | 方法 | 功能描述 | 入参 | 出参 | 关联追溯（REQ / API 文档路径） | 备注 |
 |---|---|---|---|---|---|---|
-| （待补充） | （待补充） | （待补充） | （待补充） | （待补充） | 例：`REQ-…-A`；`api-doc/modules/<模块>/xxx.md` | （待补充） |
+| （待补充） | （待补充） | （待补充） | （待补充） | （待补充） | 例：`REQ-…-A`；`04-api-docs/modules/<模块>/xxx.md` | （待补充） |
 
 ## Manager 层
 
@@ -44,8 +44,9 @@
 | 日期 | 变更人 | 变更内容 |
 |---|---|---|
 | 2026-04-06 | AI Agent | 初始化功能资产模板 |
-| 2026-04-06 | AI Agent | 移除内置 ArchUnit 分层结构测试与相关 pom 配置；分层约束以 `harness-collab/methodology/01-architecture/architecture-constraints.md` 及评审/治理为主 |
+| 2026-04-06 | AI Agent | 移除内置 ArchUnit 分层结构测试与相关 pom 配置；分层约束以 `harness-collab/05-methodology/01-architecture/architecture-constraints.md` 及评审/治理为主 |
 | 2026-04-06 | AI Agent | AI 协作产出归集至 `harness-collab/`；本文件路径变更为 `harness-collab/func.md` |
-| 2026-04-06 | AI Agent | 工程方法论文档迁入 `harness-collab/methodology/`（连续编号 00–05） |
+| 2026-04-06 | AI Agent | 工程方法论文档迁入 `harness-collab/05-methodology/`（连续编号 00–05） |
 | 2026-04-06 | AI Agent | 规范驱动优化：各层表格增加「关联追溯」列，对齐 REQ/API 文档路径 |
-| 2026-04-06 | AI Agent | 接口文档迁至 `harness-collab/api-doc/`（`templates/` + `modules/`）；`methodology/04-api-standards` 仅保留跳转 |
+| 2026-04-06 | AI Agent | 接口文档迁至 `harness-collab/04-api-docs/`（`templates/` + `modules/`）；`05-methodology/04-api-standards` 仅保留跳转 |
+| 2026-04-06 | AI Agent | `harness-collab/` 子目录按研发流程编号为 `01-product-specs`～`07-cursor-rules` |

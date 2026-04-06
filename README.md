@@ -8,7 +8,7 @@
 ## 目录总览
 
 - `AGENTS.md`：入口，链向完整协议 `harness-collab/AGENTS.md`。
-- `harness-collab/`：AI 协作与**方法论文档**归集区（含 `methodology/` 连续编号 00–05、规格/设计/计划、`func.md`、`cursor-rules` 副本等）。迁入存量库时可按需整包或摘子目录复制。
+- `harness-collab/`：AI 协作文档归集区（按研发流程：`01-product-specs`→`07-cursor-rules`，另含根目录 `AGENTS.md`、`func.md`；其中 `05-methodology/` 为方法论 00–05）。迁入存量库时可按需整包或摘子目录复制。
 - `.cursor/rules/`：Cursor 权威规则（`.mdc`）；复制到其它仓库时参见 `harness-collab/README.md`。
 - `config/`：Checkstyle 与 SpotBugs 配置。
 - `src/main/java/.../controller|service|domain|repository`：分层包骨架占位；落地时可按建议结构补充 `config`、`common` 等横切包。
@@ -34,25 +34,26 @@
 │   │   └── checkstyle-strict.xml                    # 更严格规则集（可按 profile 切换）
 │   └── spotbugs/                                    # SpotBugs 辅助配置
 │       └── exclude.xml                              # 误报/基线类排除清单（存量渐进治理用）
-├── harness-collab/                                  # AI 协作 + 方法论文档（可整体或按需复制到他仓）
+├── harness-collab/                                  # AI 协作（按研发流程编号的子目录，可整体或按需复制）
 │   ├── README.md                                    # 迁入说明、func 优先级、.mdc 复制方式
 │   ├── AGENTS.md                                    # 完整 AI 协作协议
 │   ├── func.md                                      # 功能资产总表
-│   ├── methodology/                                 # 模板方法论：治理、架构、工程、AI 流程、API 标准、规则镜像（00–05）
-│   │   ├── 00-governance/                           # 治理：门禁、基线、工具模板
-│   │   ├── 01-architecture/                         # architecture-constraints.md 等
-│   │   ├── 02-engineering/                          # dev-workflow、retrofit-playbook
-│   │   ├── 03-ai-workflow/                          # ai-delivery-playbook.md
-│   │   ├── 04-api-standards/                        # 占位跳转 → api-doc/
-│   │   └── 05-rules/                                # 与 .cursor/rules 同步的 Markdown 副本
-│   ├── api-doc/                                     # 接口文档：templates/ + modules/（按模块）
-│   ├── product-specs/                               # 产品/需求规格模板与实例
+│   ├── 01-product-specs/                            # 需求规格模板与实例
 │   │   └── templates/
-│   ├── design-docs/                                 # 技术设计模板与实例
+│   ├── 02-design-docs/                             # 技术设计模板与实例
 │   │   └── templates/
-│   ├── exec-plans/                                  # 执行计划模板与实例
+│   ├── 03-exec-plans/                               # 执行计划模板与实例
 │   │   └── templates/
-│   └── cursor-rules/                                # .mdc 副本 + README（权威仍为根目录 .cursor/rules）
+│   ├── 04-api-docs/                                 # 接口文档：templates/ + modules/（按模块）
+│   ├── 05-methodology/                             # 方法论 00–05：治理、架构、工程、AI 流程、04 占位、规则镜像
+│   │   ├── 00-governance/
+│   │   ├── 01-architecture/
+│   │   ├── 02-engineering/
+│   │   ├── 03-ai-workflow/
+│   │   ├── 04-api-standards/                        # 占位跳转 → ../04-api-docs/
+│   │   └── 05-rules/
+│   ├── 06-adapters/                                 # 老服务迁入条文与决策模板
+│   └── 07-cursor-rules/                             # .mdc 副本（权威仍为根目录 .cursor/rules）
 ├── src/                                             # 源码与测试根目录（Maven 标准布局）
 ├── AGENTS.md                                        # 协议入口 → harness-collab/AGENTS.md
 ├── pom.xml
@@ -63,7 +64,7 @@
 
 ## `src` 目录建议结构（建议）
 
-以下为**建议**采用的 Java / Spring Boot 工程布局：在 [`harness-collab/methodology/01-architecture/architecture-constraints.md`](harness-collab/methodology/01-architecture/architecture-constraints.md) 的分层（controller → service → domain，repository → domain）之上，增加常见的**横切包**（`config`、`common` 等）与**资源文件**约定。将 `<根包>` 替换为实际包名（如 `com.company.project`）。
+以下为**建议**采用的 Java / Spring Boot 工程布局：在 [`harness-collab/05-methodology/01-architecture/architecture-constraints.md`](harness-collab/05-methodology/01-architecture/architecture-constraints.md) 的分层（controller → service → domain，repository → domain）之上，增加常见的**横切包**（`config`、`common` 等）与**资源文件**约定。将 `<根包>` 替换为实际包名（如 `com.company.project`）。
 
 **约定摘要：** `common`、`config` 仅放通用能力与装配代码，**不承载核心业务规则**；业务状态与规则仍在 `domain` / `service`。团队可将全局异常处理类放在 `exception` 子包，或归入 `controller`（二选一、保持全项目一致即可）。
 
@@ -113,29 +114,29 @@ src/
 
 ## 推荐使用流程
 
-1. 在 `harness-collab/product-specs/` 编写需求规格。
-2. 在 `harness-collab/design-docs/` 输出技术设计。
-3. 在 `harness-collab/exec-plans/` 拆分可执行计划。
+1. 在 `harness-collab/01-product-specs/` 编写需求规格。
+2. 在 `harness-collab/02-design-docs/` 输出技术设计。
+3. 在 `harness-collab/03-exec-plans/` 拆分可执行计划。
 4. 按 `AGENTS.md` / `harness-collab/AGENTS.md` 流程执行开发与测试。
 5. 通过质量门禁（Checkstyle、SpotBugs、测试、JaCoCo 等；分层依赖依文档与评审落实）。
-6. 同步 API 与功能文档（`harness-collab/api-doc`、`harness-collab/func.md`）。
+6. 同步 API 与功能文档（`harness-collab/04-api-docs`、`harness-collab/func.md`）。
 
 ## 模板使用入口导航
 
 ### 第一步：明确规则与流程
 - 先读：`AGENTS.md` → `harness-collab/AGENTS.md`
 - 再读：`.cursor/rules/*.mdc`（权威规则）
-- 参考：`harness-collab/methodology/05-rules/*`（Markdown 副本）
+- 参考：`harness-collab/05-methodology/05-rules/*`（Markdown 副本）
 
 ### 第二步：产出三大核心文档
-- 需求规格：`harness-collab/product-specs/templates/template.md`
-- 技术设计：`harness-collab/design-docs/templates/template.md`
-- 执行计划：`harness-collab/exec-plans/templates/template.md`
+- 需求规格：`harness-collab/01-product-specs/templates/template.md`
+- 技术设计：`harness-collab/02-design-docs/templates/template.md`
+- 执行计划：`harness-collab/03-exec-plans/templates/template.md`
 
 ### 第三步：执行与验收
-- 研发流程：`harness-collab/methodology/02-engineering/dev-workflow.md`
-- AI 交付：`harness-collab/methodology/03-ai-workflow/ai-delivery-playbook.md`
-- 门禁治理：`harness-collab/methodology/00-governance/quality-gates.md`
+- 研发流程：`harness-collab/05-methodology/02-engineering/dev-workflow.md`
+- AI 交付：`harness-collab/05-methodology/03-ai-workflow/ai-delivery-playbook.md`
+- 门禁治理：`harness-collab/05-methodology/00-governance/quality-gates.md`
 - 统一验证：`mvn clean verify`
 
 ### 第四步：新老项目分档
@@ -146,7 +147,7 @@ src/
 ## 质量门禁
 
 - 静态检查：Checkstyle、SpotBugs
-- 分层约定：`harness-collab/methodology/01-architecture/architecture-constraints.md`（代码评审与治理；本模板不设自动依赖方向测试）
+- 分层约定：`harness-collab/05-methodology/01-architecture/architecture-constraints.md`（代码评审与治理；本模板不设自动依赖方向测试）
 - 覆盖率：JaCoCo（模板默认 `warn` 语义，可按项目阶段切换 `enforce`）
 - 文档门禁：API 变更文档同步、功能资产同步
 - 统一命令：`mvn clean verify`
@@ -166,10 +167,10 @@ src/
 ## 通用复用指南（模板定位）
 
 - 新项目接入：直接复制本模板，优先启用 `mvn clean verify` 与 `.cursor/rules/*`。
-- 历史项目接入：先对齐文档与规则，再分阶段开启门禁，结合 `harness-collab/methodology/00-governance/legacy-baseline.md` 管理豁免。
+- 历史项目接入：先对齐文档与规则，再分阶段开启门禁，结合 `harness-collab/05-methodology/00-governance/legacy-baseline.md` 管理豁免。
 - 中性原则：模板只提供工程能力与流程，不包含任何业务域模型与业务逻辑。
 
 ## 说明
 
 - 当前仓库已包含可直接执行的正式配置：`.cursor/rules/*.mdc`、`pom.xml`、`config/*`、`src/main/java/*`（测试代码按业务在 `src/test/java/` 补充）。
-- `.cursor/rules/*.mdc` 是规则权威来源；`harness-collab/methodology/05-rules/` 为 Markdown 同步副本；`harness-collab/cursor-rules/` 为整包复制用 `.mdc` 副本（修改请以根目录 `.cursor/rules` 为准并同步）。工程工具说明见 `harness-collab/methodology/00-governance/quality-tooling-templates.md`。
+- `.cursor/rules/*.mdc` 是规则权威来源；`harness-collab/05-methodology/05-rules/` 为 Markdown 同步副本；`harness-collab/07-cursor-rules/` 为整包复制用 `.mdc` 副本（修改请以根目录 `.cursor/rules` 为准并同步）。工程工具说明见 `harness-collab/05-methodology/00-governance/quality-tooling-templates.md`。
