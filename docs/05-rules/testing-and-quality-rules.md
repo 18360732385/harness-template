@@ -22,7 +22,7 @@
 
 - 单测与集成测试通过。
 - 静态检查无阻塞问题。
-- 结构测试无依赖方向违规。
+- 分层与依赖方向符合 `docs/01-architecture/architecture-constraints.md`，经评审与治理闭环落实（本模板不内置自动结构测试；如需可自行引入 ArchUnit）。
 - 文档同步完成（API + func）。
 
 ## 分档执行命令

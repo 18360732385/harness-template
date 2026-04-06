@@ -41,3 +41,4 @@
 | 日期 | 变更人 | 变更内容 |
 |---|---|---|
 | 2026-04-06 | AI Agent | 初始化功能资产模板 |
+| 2026-04-06 | AI Agent | 移除内置 ArchUnit 分层结构测试与相关 pom 配置；分层约束以 `docs/01-architecture/architecture-constraints.md` 及评审/治理为主 |

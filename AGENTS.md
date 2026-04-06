@@ -40,7 +40,7 @@ alwaysApply: true
 ## 6. 质量门禁约束
 
 - 代码门禁：Checkstyle、SpotBugs。
-- 架构门禁：ArchUnit 分层依赖规则。
+- 架构约定：分层与依赖方向以 `docs/01-architecture/architecture-constraints.md` 为准，通过代码评审与治理闭环落实；**本模板不内置**自动分层依赖校验（如需可自行引入 ArchUnit 等工具）。
 - 测试门禁：关键路径单测与集成测试通过。
 
 ## 7. 历史项目改造策略

@@ -24,7 +24,7 @@
 ## 门禁项
 
 - 静态检查通过（Checkstyle、SpotBugs）。
-- 结构测试通过（ArchUnit）。
+- 分层与依赖方向符合 `docs/01-architecture/architecture-constraints.md`（通过评审与治理闭环保证；本模板无内置自动结构测试）。
 - 单元测试与集成测试通过。
 - 覆盖率检查完成（JaCoCo，模板默认 `warn` 语义，可按项目阶段切换到 `enforce`）。
 - API 变更文档同步完成。

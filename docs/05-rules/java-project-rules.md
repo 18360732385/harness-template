@@ -8,17 +8,17 @@
 
 ## 分层约束
 
-- Controller 仅负责协议与参数校验，不写业务逻辑。
-- Service 负责业务编排，不依赖 Controller。
-- Domain 保持业务核心纯净，不依赖基础设施实现。
-- Infrastructure 负责数据与外部系统访问，不反向影响应用层。
+- `controller`：协议与参数校验，不写业务逻辑。
+- `service`：业务编排与用例，不依赖 `controller`。
+- `domain`：领域核心，不依赖 `repository` 具体实现。
+- `repository`：持久化与外部系统适配，不反向依赖 `service`/`controller`（与质量门禁分档 legacy/new 及治理基线一致）。
 
 ## 分层依赖示例
 
-- 允许：`interfaces -> application -> domain`
-- 允许：`infrastructure -> domain`
-- 禁止：`application -> interfaces`
-- 禁止：`domain -> infrastructure`
+- 允许：`controller -> service -> domain`
+- 允许：`repository -> domain`（实现领域端口/仓储接口）
+- 禁止：`service -> controller`
+- 禁止：`domain -> repository`
 
 ## 编码规范
 

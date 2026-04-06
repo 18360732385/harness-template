@@ -38,7 +38,7 @@
 ## 标准验证命令
 
 - 本地与 CI 统一使用：`mvn clean verify`
-- 该命令覆盖：单元测试、集成测试、Checkstyle、SpotBugs、ArchUnit、JaCoCo（默认 `warn`，可升级 `enforce`）
+- 该命令覆盖：单元测试、集成测试、Checkstyle、SpotBugs、JaCoCo（默认 `warn`，可升级 `enforce`）
 
 ## 交付证据建议
 

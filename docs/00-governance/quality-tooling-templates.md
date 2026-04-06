@@ -79,17 +79,9 @@ mvn clean verify -Pharness-new
 </build>
 ```
 
-## ArchUnit 示例
+## 可选扩展：架构结构测试（ArchUnit）
 
-```java
-@AnalyzeClasses(packages = "com.example")
-class LayerDependencyArchTest {
-  @ArchTest
-  static final ArchRule applicationNotDependOnInterfaces =
-      noClasses().that().resideInAPackage("..application..")
-          .should().dependOnClassesThat().resideInAPackage("..interfaces..");
-}
-```
+本模板默认**不包含** ArchUnit 依赖与分层结构测试类。若项目需要自动校验包依赖方向，可自行在 `pom.xml` 增加 `archunit-junit5` 测试依赖，并在 `src/test/java` 下编写规则类（具体规则与包命名由项目约定）。
 
 ## 覆盖率阈值建议
 

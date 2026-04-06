@@ -2,30 +2,31 @@
 
 ## 分层模型
 
-- interfaces（controller）：入站适配层，处理协议与参数校验。
-- application（service）：应用编排层，负责业务流程。
+- controller：Web 控制器层，处理协议与参数校验。
+- service：业务服务层，负责业务流程编排。
 - domain（domain/model）：核心业务规则层。
-- infrastructure（repository/client/mapper）：出站适配层，负责存储和外部系统访问。
+- repository（repository/client/mapper）：出站适配层，负责持久化与外部系统访问。
 
 ## 依赖方向
 
-- 允许：`interfaces -> application -> domain`
-- 允许：`infrastructure -> domain`（实现领域端口/仓储接口）
-- 禁止：`application -> interfaces`
-- 禁止：`domain -> infrastructure`
+- 允许：`controller -> service -> domain`
+- 允许：`repository -> domain`（实现领域端口/仓储接口）
+- 禁止：`service -> controller`
+- 禁止：`domain -> repository`
 
 ## 包结构建议
 
-- `com.company.project.interfaces`
-- `com.company.project.application`
+- `com.company.project.controller`
+- `com.company.project.service`
 - `com.company.project.domain`
-- `com.company.project.infrastructure`
+- `com.company.project.repository`
 
 ## 约束落地方式
 
 - 编码规范：Checkstyle
 - 缺陷扫描：SpotBugs
-- 架构测试：ArchUnit
+- 分层与依赖方向：代码评审、CR 与治理台账闭环落实（本模板**不默认**挂载自动结构测试）
+- 可选扩展：若团队需要机器校验依赖方向，可自行引入 ArchUnit 等库并编写测试类，**非**本模板默认真伪路径
 
 ## 例外管理
 
