@@ -9,7 +9,7 @@ alwaysApply: true
 ## 权威来源说明
 
 - 本文件为 Java Project Rule 权威定义。
-- `harness-collab/docs/05-rules/java-project-rules.md` 必须与本文件保持同步。
+- `harness-collab/methodology/05-rules/java-project-rules.md` 必须与本文件保持同步。
 
 ## 触发条件
 

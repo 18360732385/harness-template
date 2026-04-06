@@ -9,7 +9,7 @@ alwaysApply: true
 ## 权威来源说明
 
 - 本目录（`.cursor/rules`）是规则权威来源。
-- `harness-collab/docs/05-rules` 是可复制的 Markdown 副本，变更时需与本目录同步更新。
+- `harness-collab/methodology/05-rules` 是可复制的 Markdown 副本，变更时需与本目录同步更新。
 
 ## 目标
 - 让 AI 深度参与需求理解、设计、计划、编码、测试、修复全流程。
@@ -45,7 +45,7 @@ alwaysApply: true
 - 设计：`harness-collab/design-docs/*`
 - 计划：`harness-collab/exec-plans/*`
 - 实现与测试：`src/main/java/*`、`src/test/java/*`
-- 文档同步：`docs/*`（工程文档）、`harness-collab/func.md`
+- 文档同步：`harness-collab/methodology/*`（方法论文档）、`harness-collab/func.md`
 
 ## 验收证据（DoD）
 

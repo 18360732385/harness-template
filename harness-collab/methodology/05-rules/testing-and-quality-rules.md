@@ -3,7 +3,7 @@
 ## 权威来源与同步规则
 
 - 权威来源：仓库根目录 `.cursor/rules/11-testing-and-quality-rules.mdc`
-- 本文件路径：`harness-collab/docs/05-rules/testing-and-quality-rules.md`
+- 本文件路径：`harness-collab/methodology/05-rules/testing-and-quality-rules.md`
 - 本文件定位：外部项目迁移时的文档化副本
 - 维护原则：门禁命令统一为 `mvn clean verify`
 
@@ -23,7 +23,7 @@
 
 - 单测与集成测试通过。
 - 静态检查无阻塞问题。
-- 分层与依赖方向符合 `docs/01-architecture/architecture-constraints.md`，经评审与治理闭环落实（本模板不内置自动结构测试；如需可自行引入 ArchUnit）。
+- 分层与依赖方向符合 `harness-collab/methodology/01-architecture/architecture-constraints.md`，经评审与治理闭环落实（本模板不内置自动结构测试；如需可自行引入 ArchUnit）。
 - 文档同步完成（API + `harness-collab/func.md` 或团队约定的 func 路径）。
 
 ## 分档执行命令

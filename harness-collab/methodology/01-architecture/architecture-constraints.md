@@ -41,4 +41,4 @@
 
 ## 例外管理
 
-历史项目可在 `docs/00-governance/legacy-baseline.md` 登记临时豁免，必须设置清退时间。
+历史项目可在 `harness-collab/methodology/00-governance/legacy-baseline.md` 登记临时豁免，必须设置清退时间。

@@ -3,9 +3,9 @@
 ## 权威来源与同步规则
 
 - 权威来源：仓库根目录 `.cursor/rules/*.mdc`
-- 本文件路径：`harness-collab/docs/05-rules/user-rules.md`
+- 本文件路径：`harness-collab/methodology/05-rules/user-rules.md`
 - 本目录用途：跨仓复制模板与阅读参考
-- 同步要求：若规则发生变更，必须先更新 `.cursor/rules/*.mdc`，再同步 `harness-collab/docs/05-rules/`
+- 同步要求：若规则发生变更，必须先更新 `.cursor/rules/*.mdc`，再同步 `harness-collab/methodology/05-rules/`
 
 ## 适用范围
 

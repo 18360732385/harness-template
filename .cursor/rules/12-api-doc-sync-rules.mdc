@@ -9,7 +9,7 @@ alwaysApply: true
 ## 权威来源说明
 
 - 本文件为 API 文档同步规则权威定义。
-- `harness-collab/docs/05-rules/api-doc-sync-rules.md` 为同步副本。
+- `harness-collab/methodology/05-rules/api-doc-sync-rules.md` 为同步副本。
 
 ## 变更触发条件
 以下任一变更发生，必须同步更新接口文档：
@@ -19,7 +19,7 @@ alwaysApply: true
 - 请求方式变更
 
 ## 文档格式约束
-- 使用统一模板：`docs/04-api-standards/api-doc-template.md`
+- 使用统一模板：`harness-collab/methodology/04-api-standards/api-doc-template.md`
 - 必须包含：接口功能、业务流程、请求参数、响应参数。
 - `data` 为对象时，必须完整展开所有子字段：`data.xxx`、`data.obj.xxx`。
 

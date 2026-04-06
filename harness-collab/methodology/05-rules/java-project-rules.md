@@ -3,7 +3,7 @@
 ## 权威来源与同步规则
 
 - 权威来源：仓库根目录 `.cursor/rules/10-java-project-rules.mdc`
-- 本文件路径：`harness-collab/docs/05-rules/java-project-rules.md`
+- 本文件路径：`harness-collab/methodology/05-rules/java-project-rules.md`
 - 本文件定位：便于复用到外部仓库的文档镜像
 - 维护原则：以 `.mdc` 为准，本文件仅做同步副本
 
