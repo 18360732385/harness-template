@@ -1,5 +1,11 @@
 # Testing & Quality Rules
 
+## 权威来源与同步规则
+
+- 权威来源：`.cursor/rules/11-testing-and-quality-rules.mdc`
+- 本文件定位：外部项目迁移时的文档化副本
+- 维护原则：门禁命令统一为 `mvn clean verify`
+
 ## 测试策略
 
 - 单元测试：覆盖核心分支、边界、异常路径。
@@ -18,3 +24,15 @@
 - 静态检查无阻塞问题。
 - 结构测试无依赖方向违规。
 - 文档同步完成（API + func）。
+
+## 分档执行命令
+
+- 历史项目：`mvn clean verify -Pharness-legacy`
+- 新项目：`mvn clean verify -Pharness-new`
+- 可选安全扫描：`mvn clean verify -Psecurity-scan`
+
+## 验收证据
+
+- Surefire：`target/surefire-reports/*`
+- SpotBugs：`target/spotbugsXml.xml`
+- JaCoCo：`target/site/jacoco/*`

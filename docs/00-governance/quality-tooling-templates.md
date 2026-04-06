@@ -8,6 +8,16 @@
 mvn clean verify
 ```
 
+## 分档执行命令（新项目/历史项目）
+
+```bash
+# 历史项目（默认）：observe/warn 语义
+mvn clean verify -Pharness-legacy
+
+# 新项目：enforce 语义
+mvn clean verify -Pharness-new
+```
+
 ## pom.xml 关键片段
 
 ```xml
@@ -75,9 +85,9 @@ mvn clean verify
 @AnalyzeClasses(packages = "com.example")
 class LayerDependencyArchTest {
   @ArchTest
-  static final ArchRule serviceNotDependOnController =
-      noClasses().that().resideInAPackage("..service..")
-          .should().dependOnClassesThat().resideInAPackage("..controller..");
+  static final ArchRule applicationNotDependOnInterfaces =
+      noClasses().that().resideInAPackage("..application..")
+          .should().dependOnClassesThat().resideInAPackage("..interfaces..");
 }
 ```
 
@@ -85,3 +95,9 @@ class LayerDependencyArchTest {
 
 - 新项目：`jacoco.haltOnFailure=true`，`jacoco.coverage.minimum >= 0.80`
 - 历史项目：先 `jacoco.haltOnFailure=false`，阈值从 `0.50` 逐步提升到 `0.80`
+
+## 安全扫描（可选）
+
+```bash
+mvn clean verify -Psecurity-scan
+```
