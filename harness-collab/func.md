@@ -41,12 +41,10 @@
 
 ## 变更记录
 
-| 日期 | 变更人 | 变更内容 |
+以下为团队自用留痕：重大能力变更请在对应分层表格中同步更新条目，并在下表记一笔摘要（可按需增删列）。
+
+| 日期 | 变更人 | 摘要（能力或分层表变更、关联 REQ 等） |
 |---|---|---|
-| 2026-04-06 | AI Agent | 初始化功能资产模板 |
-| 2026-04-06 | AI Agent | 移除内置 ArchUnit 分层结构测试与相关 pom 配置；分层约束以 `harness-collab/05-methodology/01-architecture/architecture-constraints.md` 及评审/治理为主 |
-| 2026-04-06 | AI Agent | AI 协作产出归集至 `harness-collab/`；本文件路径变更为 `harness-collab/func.md` |
-| 2026-04-06 | AI Agent | 工程方法论文档迁入 `harness-collab/05-methodology/`（连续编号 00–05） |
-| 2026-04-06 | AI Agent | 规范驱动优化：各层表格增加「关联追溯」列，对齐 REQ/API 文档路径 |
-| 2026-04-06 | AI Agent | 接口文档迁至 `harness-collab/04-api-docs/`（`templates/` + `modules/`）；`05-methodology/04-api-standards` 仅保留跳转 |
-| 2026-04-06 | AI Agent | `harness-collab/` 子目录按研发流程编号为 `01-product-specs`～`07-cursor-rules` |
+| 2026-04-06 | — | 模板：`func.md` 位于 `harness-collab/`，协作产出编号目录 `01-`…`07-`，API 正文在 `04-api-docs/`。 |
+|  |  |  |
+|  |  |  |

@@ -3,21 +3,21 @@
 本目录集中存放 **Harness 模板**中的内容（**按研发流程排序**的编号子目录 + 根目录 `AGENTS.md`、`func.md`）：
 
 1. **AI/人协作输入输出**：`01-product-specs`、`02-design-docs`、`03-exec-plans`、`func.md`、`AGENTS.md`。
-2. **方法论文档（可读模板）**：[`05-methodology/`](05-methodology/README.md)，含连续编号 **00–05**（治理、架构、工程、AI 流程、04 占位跳转、规则镜像）；**接口说明**见 [`04-api-docs/`](04-api-docs/README.md)。
-3. **迁入老服务专用（零改业务代码）**：[`06-adapters/`](06-adapters/README.md)（冲突裁决条文、决策记录模板、可复制到 `.cursor/rules` 的片段）。
+2. **方法论文档**：[`05-methodology/`](05-methodology/README.md)（连续编号 **00–05**：治理、架构、工程、AI 流程、API 标准索引、规则说明的 Markdown 导出）；**接口 Markdown 正文**在 [`04-api-docs/`](04-api-docs/README.md)。
+3. **迁入老服务辅助**：[`06-adapters/`](06-adapters/README.md)（冲突裁决条文、决策记录模板、可选 Cursor 规则片段）。
 
-根目录 **不再** 保留单独的 `docs/`；若迁入已有项目且对方根目录已有 `docs/`，可只复制本目录下的子树（例如仅 `01-product-specs` + `07-cursor-rules`），避免覆盖对方整棵文档树。
+## Cursor 规则：单一事实来源与同步
 
-## 规则与方法论文档：编辑顺序（防三份漂移）
+修改规则时**只改一处源文件**，再同步到另外两处，避免三套内容不一致：
 
-本仓库存在三处与 Cursor 规则相关的内容，**修改时必须按顺序同步**：
-
-1. **权威编辑**：仓库根 [`.cursor/rules/*.mdc`](../.cursor/rules/)。
-2. **整包复制用副本**：在同一提交内执行（PowerShell 示例）  
+1. **权威来源**：仓库根 [`.cursor/rules/*.mdc`](../.cursor/rules/)。
+2. **整包复制**：同一提交内执行（PowerShell，在仓库根）  
    `Copy-Item -Force .cursor/rules/*.mdc harness-collab/07-cursor-rules/`
-3. **Markdown 镜像**（供跨仓复制与阅读）：更新 [harness-collab/05-methodology/05-rules/](05-methodology/05-rules/) 下对应 `.md`（内容与 `.mdc` 对齐，可略去 YAML frontmatter；触发范围说明写在镜像文首）。
+3. **Markdown 导出**（便于无 Cursor 环境阅读或跨仓粘贴）：更新 [`05-methodology/05-rules/`](05-methodology/05-rules/) 下对应 `.md`（与 `.mdc` 语义对齐，可略去 YAML frontmatter）。
 
-CI 会对 `harness-collab/03-exec-plans` 中非模板的计划文件做 **plan_vs_impl** 关键字检查（见根目录 [`scripts/verify-exec-plans.sh`](../scripts/verify-exec-plans.sh)）。
+复制命令与「本目录」指代说明见 [`07-cursor-rules/README.md`](07-cursor-rules/README.md)；**勿**在三处各自写长段重复说明。
+
+CI 对 `03-exec-plans` 中非模板 `.md` 检查 **plan_vs_impl**（[`scripts/verify-exec-plans.sh`](../scripts/verify-exec-plans.sh)）。
 
 ## func.md 权威路径约定
 
@@ -29,11 +29,11 @@ CI 会对 `harness-collab/03-exec-plans` 中非模板的计划文件做 **plan_v
 
 ## 迁入其它 Git 仓库的步骤（建议）
 
-1. 复制整个 `harness-collab/` 到目标仓库根目录（与目标 `README` 同级），或**按需**仅复制 `01-product-specs`、`02-design-docs`、`03-exec-plans`、`05-methodology` 等子目录。
-2. **Cursor 规则**：将仓库根 `.cursor/rules/` 与本模板根 `.cursor/rules/` 对齐（也可将 `07-cursor-rules/*.mdc` 复制到 `.cursor/rules/`，**以模板源 `.mdc` 为准**）。
-3. **可选**：在目标仓库根增加短 `AGENTS.md` 入口，链向 `harness-collab/AGENTS.md`。
-4. 目标仓库若需治理/架构/API 模板，可复制 `05-methodology/`；若仅需 AI 工作流，可跳过 `05-methodology/00-governance` 等子目录。
-5. **历史规范可能与 harness 冲突时**：复制 [`06-adapters/`](06-adapters/README.md) 并按其中步骤粘贴条文、登记 `legacy-baseline`、可选增加 Cursor 规则片段（**不修改业务源码**）。
+1. 将本目录复制到目标仓库根（与目标 `README` 同级），或按需只复制 `01-product-specs`、`02-design-docs`、`03-exec-plans`、`05-methodology` 等。**若对方已有根目录 `docs/` 或自有文档树，请按需摘子目录复制，避免无意覆盖。**
+2. **Cursor 规则**：对齐仓库根 `.cursor/rules/`（可将 `07-cursor-rules/*.mdc` 复制过去，**以模板 `.cursor/rules` 为源**）。
+3. **可选**：在目标仓库根增加短 `AGENTS.md`，链接 `harness-collab/AGENTS.md`。
+4. 仅需 AI 工作流时可跳过 `05-methodology/00-governance` 等子目录；需要治理/架构模板时复制完整 `05-methodology/`。
+5. **与存量内部规范冲突时**：使用 [`06-adapters/`](06-adapters/README.md)，并登记 `legacy-baseline`（**不修改业务源码**）。
 
 ## 本目录结构（按流程）
 
@@ -44,22 +44,19 @@ CI 会对 `harness-collab/03-exec-plans` 中非模板的计划文件做 **plan_v
 | `01-product-specs/` | 产品/需求规格模板与实例 |
 | `02-design-docs/` | 技术设计模板与实例 |
 | `03-exec-plans/` | 执行计划与验收模板 |
-| `04-api-docs/` | 接口文档（`templates/` + `modules/`，按模块），见 [04-api-docs/README.md](04-api-docs/README.md) |
-| `05-methodology/` | 方法论文档 00–05（见 [05-methodology/README.md](05-methodology/README.md)） |
-| `06-adapters/` | 老服务迁入：条文与决策模板（见 [06-adapters/README.md](06-adapters/README.md)） |
-| `07-cursor-rules/` | `.mdc` 副本；**权威编辑**仍为仓库根 `.cursor/rules` |
+| `04-api-docs/` | 接口文档（`templates/` + `modules/`），见 [04-api-docs/README.md](04-api-docs/README.md) |
+| `05-methodology/` | 方法论文档 00–05，见 [05-methodology/README.md](05-methodology/README.md) |
+| `06-adapters/` | 老仓库迁入条文与决策模板，见 [06-adapters/README.md](06-adapters/README.md) |
+| `07-cursor-rules/` | `.mdc` 副本；编辑以根 `.cursor/rules` 为准 |
 
-## 路径映射（历史书签）
+## 旧链接速查（外部书签）
 
-| 旧路径 | 新路径 |
+若外部文档或旧 PR 仍使用早期路径，可按下表对照（子路径其余部分不变）：
+
+| 若见到 | 请改为 |
 |--------|--------|
-| `/docs/00-governance/` … | `/harness-collab/05-methodology/00-governance/` … |
-| `/docs/01-architecture/` … | `/harness-collab/05-methodology/01-architecture/` … |
-| `/docs/02-engineering/` … | `/harness-collab/05-methodology/02-engineering/` … |
-| `/docs/04-api-standards/` … | 接口正文：`/harness-collab/04-api-docs/`；占位：`/harness-collab/05-methodology/04-api-standards/README.md` |
-| `/harness-collab/docs/03-ai-workflow/` | `/harness-collab/05-methodology/03-ai-workflow/` |
-| `/harness-collab/docs/05-rules/` | `/harness-collab/05-methodology/05-rules/` |
-| `harness-collab/product-specs` 等（无编号） | `harness-collab/01-product-specs` … `07-cursor-rules`（见上表） |
+| 仓库根 `docs/<本模板方法论路径>/…` | `harness-collab/05-methodology/<同上子路径>/…` |
+| `harness-collab/docs/…`、`harness-collab/product-specs` 等无编号目录 | `harness-collab/05-methodology/…` 或 `01-product-specs`～`07-cursor-rules`（见上表） |
 | `harness-collab/api-doc` | `harness-collab/04-api-docs` |
 
 返回仓库根：[README.md](../README.md)

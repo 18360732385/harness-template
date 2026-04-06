@@ -1,11 +1,9 @@
 # User Rules（可复制到 Cursor Rule）
 
-## 权威来源与同步规则
+## 权威来源与同步
 
-- 权威来源：仓库根目录 `.cursor/rules/*.mdc`
-- 本文件路径：`harness-collab/05-methodology/05-rules/user-rules.md`
-- 本目录用途：跨仓复制模板与阅读参考
-- 同步要求：若规则发生变更，必须先更新 `.cursor/rules/*.mdc`，再同步 `harness-collab/05-methodology/05-rules/`；副本目录 `harness-collab/07-cursor-rules/` 见该目录 README 中的复制命令。
+- **勿在本文件单独定稿**：权威来源为仓库根 **`.cursor/rules/01-user-rules.mdc`**；变更后按 [`harness-collab/README.md`](../../README.md) 中「Cursor 规则：单一事实来源与同步」同步 `07-cursor-rules` 与本目录。
+- 本文件为 Markdown 导出，供无 Cursor 环境阅读或与 `05-methodology` 一并分发。
 
 ## 权威优先级（冲突时）
 

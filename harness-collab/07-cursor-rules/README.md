@@ -1,6 +1,6 @@
 # cursor-rules（副本）
 
-此目录下的 `*.mdc` 与仓库根目录 **`.cursor/rules/*.mdc` 内容一致**，用于将 `harness-collab/` 整包复制到其他项目时一并带走规则草稿。
+此目录下的 `*.mdc` 与仓库根目录 **`.cursor/rules/*.mdc` 内容一致**，用于将 `harness-collab/` 整包复制到其他项目时一并带走规则草稿。与上层 [`harness-collab/README.md`](../README.md) 中「Cursor 规则：单一事实来源与同步」一致；**以本文件为复制命令与「本目录」指代的速查页。**
 
 ## 编辑顺序（勿只改本目录）
 

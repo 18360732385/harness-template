@@ -45,12 +45,12 @@
 │   ├── 03-exec-plans/                               # 执行计划模板与实例
 │   │   └── templates/
 │   ├── 04-api-docs/                                 # 接口文档：templates/ + modules/（按模块）
-│   ├── 05-methodology/                             # 方法论 00–05：治理、架构、工程、AI 流程、04 占位、规则镜像
+│   ├── 05-methodology/                             # 方法论 00–05：治理、架构、工程、AI 流程、API 标准索引、Rules Markdown 导出
 │   │   ├── 00-governance/
 │   │   ├── 01-architecture/
 │   │   ├── 02-engineering/
 │   │   ├── 03-ai-workflow/
-│   │   ├── 04-api-standards/                        # 占位跳转 → ../04-api-docs/
+│   │   ├── 04-api-standards/                        # API 标准索引；正文见 ../04-api-docs/
 │   │   └── 05-rules/
 │   ├── 06-adapters/                                 # 老服务迁入条文与决策模板
 │   └── 07-cursor-rules/                             # .mdc 副本（权威仍为根目录 .cursor/rules）
@@ -173,4 +173,4 @@ src/
 ## 说明
 
 - 当前仓库已包含可直接执行的正式配置：`.cursor/rules/*.mdc`、`pom.xml`、`config/*`、`src/main/java/*`（测试代码按业务在 `src/test/java/` 补充）。
-- `.cursor/rules/*.mdc` 是规则权威来源；`harness-collab/05-methodology/05-rules/` 为 Markdown 同步副本；`harness-collab/07-cursor-rules/` 为整包复制用 `.mdc` 副本（修改请以根目录 `.cursor/rules` 为准并同步）。工程工具说明见 `harness-collab/05-methodology/00-governance/quality-tooling-templates.md`。
+- **规则权威与三处同步流程**：见 [`harness-collab/README.md`](harness-collab/README.md) 中 **「Cursor 规则：单一事实来源与同步」**；工程工具说明见 `harness-collab/05-methodology/00-governance/quality-tooling-templates.md`。

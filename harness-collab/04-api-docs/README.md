@@ -16,8 +16,8 @@
 - [`harness-collab/func.md`](../func.md) 中「关联追溯」列建议填写本目录下具体路径，例：`04-api-docs/modules/order/create-order.md`。
 - 需求与设计 ID（REQ/DES）仍按 [`AGENTS.md`](../AGENTS.md) 与 `01-product-specs` / `02-design-docs` 约定。
 
-## 与 methodology/04 的关系
+## 与 `05-methodology/04-api-standards` 的关系
 
-方法论文档树 **00–05** 中序号 **04** 位保留占位说明，正文已迁至此目录。旧书签 [`05-methodology/04-api-standards/`](../05-methodology/04-api-standards/README.md) 仅指向本目录。
+与 [`05-methodology/04-api-standards/`](../05-methodology/04-api-standards/README.md) 对应同一「API 标准与格式」主题；**正文维护在本目录**。
 
 返回：[harness-collab/README.md](../README.md)

@@ -1,11 +1,9 @@
 # Testing & Quality Rules
 
-## 权威来源与同步规则
+## 权威来源与同步
 
-- 权威来源：仓库根目录 `.cursor/rules/11-testing-and-quality-rules.mdc`
-- 本文件路径：`harness-collab/05-methodology/05-rules/testing-and-quality-rules.md`
-- 本文件定位：外部项目迁移时的文档化副本
-- 维护原则：门禁命令统一为 `mvn clean verify`
+- **勿在本文件单独定稿**：权威来源为仓库根 **`.cursor/rules/11-testing-and-quality-rules.mdc`**；同步流程见 [`harness-collab/README.md`](../../README.md) 中「Cursor 规则：单一事实来源与同步」。门禁命令以 `.mdc` 为准（模板为 `mvn clean verify`）。
+- 本文件为 Markdown 导出，供无 Cursor 环境阅读或与 `05-methodology` 一并分发。
 - **在 Cursor 中的生效范围**：对应 `.mdc` 使用 `globs: "**/*.java"`、`alwaysApply: false`，与 Java 相关会话中附加。
 
 ## 测试策略

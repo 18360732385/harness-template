@@ -1,11 +1,9 @@
 # Java Project Rules（可复制到 Project Rule）
 
-## 权威来源与同步规则
+## 权威来源与同步
 
-- 权威来源：仓库根目录 `.cursor/rules/10-java-project-rules.mdc`
-- 本文件路径：`harness-collab/05-methodology/05-rules/java-project-rules.md`
-- 本文件定位：便于复用到外部仓库的文档镜像
-- 维护原则：以 `.mdc` 为准，本文件仅做同步副本
+- **勿在本文件单独定稿**：权威来源为仓库根 **`.cursor/rules/10-java-project-rules.mdc`**；同步流程见 [`harness-collab/README.md`](../../README.md) 中「Cursor 规则：单一事实来源与同步」。
+- 本文件为 Markdown 导出，供无 Cursor 环境阅读或与 `05-methodology` 一并分发。
 - **在 Cursor 中的生效范围**：对应 `.mdc` 使用 `globs: "**/*.java"`、`alwaysApply: false`，通常在编辑或聚焦 Java 源文件时附加本规则。
 
 ## 分层约束

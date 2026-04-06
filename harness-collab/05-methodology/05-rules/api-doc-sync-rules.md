@@ -1,11 +1,9 @@
 # API 文档同步规则
 
-## 权威来源与同步规则
+## 权威来源与同步
 
-- 权威来源：仓库根目录 `.cursor/rules/12-api-doc-sync-rules.mdc`
-- 本文件路径：`harness-collab/05-methodology/05-rules/api-doc-sync-rules.md`
-- 本文件定位：可复制的文档版本
-- 维护原则：先改 `.mdc`，再同步本文件
+- **勿在本文件单独定稿**：权威来源为仓库根 **`.cursor/rules/12-api-doc-sync-rules.mdc`**；同步流程见 [`harness-collab/README.md`](../../README.md) 中「Cursor 规则：单一事实来源与同步」。
+- 本文件为 Markdown 导出，供无 Cursor 环境阅读或与 `05-methodology` 一并分发。
 
 ## 必须同步的触发条件
 
