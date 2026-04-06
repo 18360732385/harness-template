@@ -13,6 +13,7 @@
 
 | 服务名 | 方法 | 功能描述 | 入参 | 出参 | 关联追溯（REQ / API 文档路径） | 备注 |
 |---|---|---|---|---|---|---|
+| `WelcomeService` | `welcome()` | 模板示例：固定返回欢迎语，供单测/JaCoCo 基线 | 无 | `String` | 无（非业务需求）；代码 `src/main/java/.../service/WelcomeService.java` | 业务项目可复制后替换为真实用例 |
 | （待补充） | （待补充） | （待补充） | （待补充） | （待补充） | 例：`REQ-…-A`；`04-api-docs/modules/<模块>/xxx.md` | （待补充） |
 
 ## Manager 层
@@ -46,5 +47,6 @@
 | 日期 | 变更人 | 摘要（能力或分层表变更、关联 REQ 等） |
 |---|---|---|
 | 2026-04-06 | — | 模板：`func.md` 位于 `harness-collab/`，协作产出编号目录 `01-`…`06-adapters`，API 正文在 `04-api-docs/`。 |
+| 2026-04-06 | — | 登记模板示例 `WelcomeService`；CI 文档弱校验脚本与 ArchUnit 可选 profile 落地，见根 `README` / `quality-gates.md`。 |
 |  |  |  |
 |  |  |  |

@@ -33,17 +33,25 @@
 ## 门禁项
 
 - 静态检查通过（Checkstyle、SpotBugs）。
-- 分层与依赖方向符合 `harness-collab/05-methodology/01-architecture/architecture-constraints.md`（通过评审与治理闭环保证；本模板无内置自动结构测试）。
-- 单元测试与集成测试通过。
+- 分层与依赖方向符合 `harness-collab/05-methodology/01-architecture/architecture-constraints.md`（通过评审与治理闭环保证；本模板无**默认**自动结构测试；可选 `mvn clean verify -Pharness-new -Parchunit` 启用 ArchUnit，源码见 `src/test/archunit/java`，参阅 [archunit-recipe.md](../01-architecture/archunit-recipe.md)）。
+- 单元测试与集成测试通过（**本模板仓库**已含最小示例用例以满足 Surefire/JaCoCo 基线；**业务项目**须按域补充单测与集成测试，不能仅依赖模板级示例）。
 - 覆盖率检查完成（JaCoCo，模板默认 `warn` 语义，可按项目阶段切换到 `enforce`）。
 - API 变更文档同步完成（正文位于 `harness-collab/04-api-docs/`，格式见 `04-api-docs/templates/api-doc-template.md`）。
 - `harness-collab/func.md` 功能资产同步完成。
 - 风险与回滚策略已记录（必须落在 `harness-collab/03-exec-plans` 文档中）。
 
+### 机审与人审
+
+| 类型 | 本仓库落地方式 |
+|------|----------------|
+| 机审 | `mvn clean verify`（Checkstyle、SpotBugs、测试、JaCoCo）；非模板 `03-exec-plans` 的 `plan_vs_impl` 关键字（[`scripts/verify-exec-plans.sh`](../../../scripts/verify-exec-plans.sh)）；GitHub Actions 矩阵见 [`.github/workflows/ci-verify.yml`](../../../.github/workflows/ci-verify.yml)。 |
+| 弱提示（不替代 CR） | PR 上可选运行 [`scripts/verify-doc-gates.sh`](../../../scripts/verify-doc-gates.sh)：在变更 `src/main/java` 时提示核对 `func.md`；变更 `controller` 时提示核对 `04-api-docs`。默认仅 advisory，见脚本说明。 |
+| 人审 | API 与 `func` 语义是否正确、分层是否违反 `architecture-constraints.md`、需求/设计/计划追溯是否完整。 |
+
 ## 建议执行顺序
 
 1. 本地执行 `mvn clean verify`（统一门禁命令）。
-2. CI 执行 `mvn clean verify` 并归档测试报告。
+2. CI 执行 `mvn clean verify`（含 `harness-legacy` 与 `harness-new` 组合，以 workflow 为准）并归档测试报告。
 3. 通过后进入评审与发布流程。
 
 ## 复用建议（新项目/历史项目）

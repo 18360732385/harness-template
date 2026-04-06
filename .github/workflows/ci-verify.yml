@@ -13,11 +13,14 @@ jobs:
       fail-fast: false
       matrix:
         java: ["17", "21"]
+        harness_profile: [harness-legacy, harness-new]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Setup JDK 17
+      - name: Setup JDK
         uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -25,30 +28,36 @@ jobs:
           cache: maven
 
       - name: Run Maven Verify
-        run: mvn --batch-mode --no-transfer-progress clean verify -Pharness-legacy
+        run: mvn --batch-mode --no-transfer-progress clean verify -P${{ matrix.harness_profile }}
 
       - name: Verify exec-plans (non-template) mention plan_vs_impl
+        if: matrix.harness_profile == 'harness-legacy' && matrix.java == '17'
         run: bash scripts/verify-exec-plans.sh
+
+      - name: Advisory doc gates (func / 04-api-docs)
+        if: github.event_name == 'pull_request' && matrix.harness_profile == 'harness-legacy' && matrix.java == '17'
+        continue-on-error: true
+        run: bash scripts/verify-doc-gates.sh "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}"
 
       - name: Upload Surefire Reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: surefire-reports
+          name: surefire-reports-java-${{ matrix.java }}-${{ matrix.harness_profile }}
           path: target/surefire-reports/**
 
       - name: Upload SpotBugs Reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: spotbugs-reports
+          name: spotbugs-reports-java-${{ matrix.java }}-${{ matrix.harness_profile }}
           path: target/spotbugsXml.xml
 
       - name: Upload JaCoCo Reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: jacoco-reports-java-${{ matrix.java }}
+          name: jacoco-reports-java-${{ matrix.java }}-${{ matrix.harness_profile }}
           path: target/site/jacoco/**
 
   security-scan:

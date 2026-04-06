@@ -11,8 +11,8 @@
 - `harness-collab/`：AI 协作文档归集区（按研发流程：`01-product-specs`→`06-adapters`，另含根目录 `AGENTS.md`、`func.md`；其中 `05-methodology/` 为方法论 00–04）。迁入存量库时可按需整包或摘子目录复制；**Cursor 规则以仓库根 `.cursor/rules` 为准**。
 - `.cursor/rules/`：Cursor 权威规则（`.mdc`）；复制到其它仓库时参见 `harness-collab/README.md`。
 - `config/`：Checkstyle 与 SpotBugs 配置。
-- `src/main/java/.../controller|service|domain|repository`：分层包骨架占位；落地时可按建议结构补充 `config`、`common` 等横切包。
-- `src/test/java/`：测试根目录（本模板无强制示例类；按业务补充单测与集成测试）。
+- `src/main/java/...`：含模板级启动类、示例 `WelcomeService` 与四层 `package-info`；可按下文「src 建议结构」补充 `config`、`common` 等横切包。
+- `src/test/java/`：含上下文加载与示例单测；业务项目须按域扩展单测与集成测试（见 `quality-gates.md`）。
 
 ## 仓库根目录结构（当前）
 
@@ -135,7 +135,7 @@ src/
 - 研发流程：`harness-collab/05-methodology/02-engineering/dev-workflow.md`
 - AI 交付：`harness-collab/05-methodology/03-ai-workflow/ai-delivery-playbook.md`
 - 门禁治理：`harness-collab/05-methodology/00-governance/quality-gates.md`
-- 统一验证：`mvn clean verify`
+- 统一验证：`mvn clean verify`（PR 上机审组合以 [`.github/workflows/ci-verify.yml`](.github/workflows/ci-verify.yml) 为准：JDK 17/21 × `harness-legacy` / `harness-new`）
 
 ### 第四步：新老项目分档
 - 历史项目：`mvn clean verify -Pharness-legacy`
@@ -145,11 +145,11 @@ src/
 ## 质量门禁
 
 - 静态检查：Checkstyle、SpotBugs
-- 分层约定：`harness-collab/05-methodology/01-architecture/architecture-constraints.md`（代码评审与治理；本模板不设自动依赖方向测试）
-- 覆盖率：JaCoCo（模板默认 `warn` 语义，可按项目阶段切换 `enforce`）
-- 文档门禁：API 变更文档同步、功能资产同步
+- 分层约定：`harness-collab/05-methodology/01-architecture/architecture-constraints.md`（代码评审与治理；本模板不设默认自动依赖方向测试；可选 `mvn clean verify -Pharness-new -Parchunit` 启用 ArchUnit，见 `05-methodology/01-architecture/archunit-recipe.md`）
+- 覆盖率：JaCoCo（`harness-legacy` 低于阈值不阻塞；`harness-new` 下阻塞；启动类见 `pom.xml` 中 JaCoCo 排除说明）
+- 文档门禁：API 变更文档同步、功能资产同步（以评审与 PR 核对为主；PR 上可对 `src/main/java` / `controller` 变更触发 **`scripts/verify-doc-gates.sh` 建议项**，见 `scripts/README.md`）
 - 统一命令：`mvn clean verify`
-- CI：JDK 17/21 矩阵校验 + 可选 `security-scan`（OWASP Dependency-Check）
+- CI：[`.github/workflows/ci-verify.yml`](.github/workflows/ci-verify.yml)：JDK **17 / 21** × Profile **`harness-legacy` / `harness-new`** 全矩阵 `clean verify`；独立 job **可选** `security-scan`（`continue-on-error`）；非模板 `03-exec-plans` 校验 `plan_vs_impl`
 
 ## 迁移策略（历史项目）
 

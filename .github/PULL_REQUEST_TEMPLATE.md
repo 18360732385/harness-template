@@ -7,7 +7,8 @@
 - [ ] 已阅读/更新 `harness-collab/func.md`（或团队约定的 func 权威路径）
 - [ ] 需求/设计/计划追溯齐全：`01-product-specs`（REQ）→ `02-design-docs`（DES）→ `03-exec-plans`（TASK + **plan_vs_impl**）
 - [ ] 接口变更已同步 `harness-collab/04-api-docs/`（建议 `modules/<模块>/`，按 `04-api-docs/templates/api-doc-template.md`）
-- [ ] 本地已通过 `mvn clean verify`（存量常用 `-Pharness-legacy`；新项目/ enforce 阶段可用 `-Pharness-new`）
+- [ ] 本地已通过 `mvn clean verify`（存量常用 `-Pharness-legacy`；新项目/ enforce 阶段可用 `-Pharness-new`；与 CI 矩阵一致时可两处都试跑）
+- [ ] 机审/人审边界已知悉：`harness-collab/05-methodology/00-governance/quality-gates.md`（含 `scripts/verify-doc-gates.sh` 仅供提示，不替代评审）
 
 ## 风险与回滚
 
