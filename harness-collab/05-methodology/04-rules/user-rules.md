@@ -2,7 +2,7 @@
 
 ## 权威来源与同步
 
-- **勿在本文件单独定稿**：权威来源为仓库根 **`.cursor/rules/01-user-rules.mdc`**；变更后按 [`harness-collab/README.md`](../../README.md) 中「Cursor 规则：单一事实来源与同步」同步 `07-cursor-rules` 与本目录。
+- **勿在本文件单独定稿**：权威来源为仓库根 **`.cursor/rules/01-user-rules.mdc`**；变更后按 [`harness-collab/README.md`](../../README.md) 中「Cursor 规则：单一事实来源与同步」更新本目录对应 `.md`。
 - 本文件为 Markdown 导出，供无 Cursor 环境阅读或与 `05-methodology` 一并分发。
 
 ## 权威优先级（冲突时）

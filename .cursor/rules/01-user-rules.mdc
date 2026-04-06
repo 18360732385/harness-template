@@ -9,7 +9,7 @@ alwaysApply: true
 ## 权威来源说明
 
 - 本目录（`.cursor/rules`）是规则权威来源。
-- `harness-collab/05-methodology/05-rules` 是可复制的 Markdown 副本，变更时需与本目录同步更新。
+- `harness-collab/05-methodology/04-rules` 是可复制的 Markdown 副本，变更时需与本目录同步更新。
 
 ## 权威优先级（冲突时）
 

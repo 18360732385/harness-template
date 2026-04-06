@@ -8,7 +8,7 @@
 ## 目录总览
 
 - `AGENTS.md`：入口，链向完整协议 `harness-collab/AGENTS.md`。
-- `harness-collab/`：AI 协作文档归集区（按研发流程：`01-product-specs`→`07-cursor-rules`，另含根目录 `AGENTS.md`、`func.md`；其中 `05-methodology/` 为方法论 00–05）。迁入存量库时可按需整包或摘子目录复制。
+- `harness-collab/`：AI 协作文档归集区（按研发流程：`01-product-specs`→`06-adapters`，另含根目录 `AGENTS.md`、`func.md`；其中 `05-methodology/` 为方法论 00–04）。迁入存量库时可按需整包或摘子目录复制；**Cursor 规则以仓库根 `.cursor/rules` 为准**。
 - `.cursor/rules/`：Cursor 权威规则（`.mdc`）；复制到其它仓库时参见 `harness-collab/README.md`。
 - `config/`：Checkstyle 与 SpotBugs 配置。
 - `src/main/java/.../controller|service|domain|repository`：分层包骨架占位；落地时可按建议结构补充 `config`、`common` 等横切包。
@@ -45,15 +45,13 @@
 │   ├── 03-exec-plans/                               # 执行计划模板与实例
 │   │   └── templates/
 │   ├── 04-api-docs/                                 # 接口文档：templates/ + modules/（按模块）
-│   ├── 05-methodology/                             # 方法论 00–05：治理、架构、工程、AI 流程、API 标准索引、Rules Markdown 导出
+│   ├── 05-methodology/                             # 方法论 00–04：治理、架构、工程、AI 流程、Rules Markdown 导出
 │   │   ├── 00-governance/
 │   │   ├── 01-architecture/
 │   │   ├── 02-engineering/
 │   │   ├── 03-ai-workflow/
-│   │   ├── 04-api-standards/                        # API 标准索引；正文见 ../04-api-docs/
-│   │   └── 05-rules/
-│   ├── 06-adapters/                                 # 老服务迁入条文与决策模板
-│   └── 07-cursor-rules/                             # .mdc 副本（权威仍为根目录 .cursor/rules）
+│   │   └── 04-rules/                                # Rules 的 Markdown 导出（与根 .cursor/rules 同步）
+│   └── 06-adapters/                                 # 老服务迁入条文与决策模板
 ├── src/                                             # 源码与测试根目录（Maven 标准布局）
 ├── AGENTS.md                                        # 协议入口 → harness-collab/AGENTS.md
 ├── pom.xml
@@ -126,7 +124,7 @@ src/
 ### 第一步：明确规则与流程
 - 先读：`AGENTS.md` → `harness-collab/AGENTS.md`
 - 再读：`.cursor/rules/*.mdc`（权威规则）
-- 参考：`harness-collab/05-methodology/05-rules/*`（Markdown 副本）
+- 参考：`harness-collab/05-methodology/04-rules/*`（Markdown 副本）
 
 ### 第二步：产出三大核心文档
 - 需求规格：`harness-collab/01-product-specs/templates/template.md`
@@ -173,4 +171,4 @@ src/
 ## 说明
 
 - 当前仓库已包含可直接执行的正式配置：`.cursor/rules/*.mdc`、`pom.xml`、`config/*`、`src/main/java/*`（测试代码按业务在 `src/test/java/` 补充）。
-- **规则权威与三处同步流程**：见 [`harness-collab/README.md`](harness-collab/README.md) 中 **「Cursor 规则：单一事实来源与同步」**；工程工具说明见 `harness-collab/05-methodology/00-governance/quality-tooling-templates.md`。
+- **规则权威与两处同步流程**：见 [`harness-collab/README.md`](harness-collab/README.md) 中 **「Cursor 规则：单一事实来源与同步」**；工程工具说明见 `harness-collab/05-methodology/00-governance/quality-tooling-templates.md`。

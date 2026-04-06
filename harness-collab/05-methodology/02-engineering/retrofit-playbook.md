@@ -12,9 +12,9 @@
 |---|---|---|---|---|
 | **observe** | 采集问题，不拦截发布 | `AGENTS.md`、`func.md`、`01-product-specs` + `02-design-docs` + `03-exec-plans` 模板；[`03-ai-workflow`](../03-ai-workflow/ai-delivery-playbook.md) | `mvn clean verify` 或显式 `mvn clean verify -Pharness-legacy` | 低阈值、`haltOnFailure=false`（legacy 默认） |
 | **warn** | 告警进治理台账，逐步收敛 | 上述 + [`00-governance`](../00-governance/quality-gates.md) + [`01-architecture`](../01-architecture/architecture-constraints.md) + [`04-api-docs`](../../04-api-docs/README.md)（模板 [`api-doc-template.md`](../../04-api-docs/templates/api-doc-template.md)） | 同上（仍为 legacy 或团队自调 properties） | 保持 warn，计划修复缺口 |
-| **enforce** | 不达标阻塞合入 | 完整 **methodology 00–05** + **`04-api-docs/`** + 根 `.cursor/rules`（或 `07-cursor-rules` 副本） | `mvn clean verify -Pharness-new`（新项目或治理完成后） | 高阈值、`haltOnFailure=true` |
+| **enforce** | 不达标阻塞合入 | 完整 **methodology 00–04** + **`04-api-docs/`** + 根 `.cursor/rules` | `mvn clean verify -Pharness-new`（新项目或治理完成后） | 高阈值、`haltOnFailure=true` |
 
-**仅 AI 协作流、暂不接治理模板时** 的最小复制包：`harness-collab/AGENTS.md`、`func.md`、`01-product-specs/`、`02-design-docs/`、`03-exec-plans/`，以及任选 `.cursor/rules` 或 `07-cursor-rules/`；可不复制 `05-methodology/00-governance`。
+**仅 AI 协作流、暂不接治理模板时** 的最小复制包：`harness-collab/AGENTS.md`、`func.md`、`01-product-specs/`、`02-design-docs/`、`03-exec-plans/`，以及仓库根 `.cursor/rules/`；可不复制 `05-methodology/00-governance`。
 
 若存量仓库已有成体系的内部规范且可能与 harness 不一致，建议一并复制 [**06-adapters/**](../../06-adapters/README.md)，在业务侧明确 **harness 默认优先** 与 **baseline 豁免**（不涉及改业务代码）。
 
