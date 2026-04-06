@@ -1,9 +1,10 @@
 # AI 协作与方法论文档包（harness-collab）
 
-本目录集中存放 **Harness 模板**中的两类内容：
+本目录集中存放 **Harness 模板**中的内容：
 
 1. **AI/人协作输入输出**：`product-specs`、`design-docs`、`exec-plans`、`func.md`、`AGENTS.md`。
 2. **方法论文档（可读模板）**：[`methodology/`](methodology/README.md)，含连续编号 **00–05**（治理、架构、工程、AI 流程、API 标准、规则镜像）。
+3. **迁入老服务专用（零改业务代码）**：[`adapters/`](adapters/README.md)（冲突裁决条文、决策记录模板、可复制到 `.cursor/rules` 的片段）。
 
 根目录 **不再** 保留单独的 `docs/`；若迁入已有项目且对方根目录已有 `docs/`，可只复制本目录下的子树（例如仅 `product-specs` + `.cursor/rules`），避免覆盖对方整棵文档树。
 
@@ -32,6 +33,7 @@ CI 会对 `harness-collab/exec-plans` 中非模板的计划文件做 **plan_vs_i
 2. **Cursor 规则**：将仓库根 `.cursor/rules/` 与本模板根 `.cursor/rules/` 对齐（也可将 `cursor-rules/*.mdc` 复制到 `.cursor/rules/`，**以模板源 `.mdc` 为准**）。
 3. **可选**：在目标仓库根增加短 `AGENTS.md` 入口，链向 `harness-collab/AGENTS.md`。
 4. 目标仓库若需治理/架构/API 模板，可复制 `methodology/`；若仅需 AI 工作流，可跳过 `methodology/00-governance` 等子目录。
+5. **历史规范可能与 harness 冲突时**：复制 [`adapters/`](adapters/README.md) 并按其中步骤粘贴条文、登记 `legacy-baseline`、可选增加 Cursor 规则片段（**不修改业务源码**）。
 
 ## 本目录结构（简）
 
@@ -43,6 +45,7 @@ CI 会对 `harness-collab/exec-plans` 中非模板的计划文件做 **plan_vs_i
 | `product-specs/` | 产品/需求规格模板与实例 |
 | `design-docs/` | 技术设计模板与实例 |
 | `exec-plans/` | 执行计划与验收模板 |
+| `adapters/` | 老服务迁入时：harness 优先条文与决策模板（见 [adapters/README.md](adapters/README.md)） |
 | `cursor-rules/` | `.mdc` 副本；**权威编辑**仍为仓库根 `.cursor/rules` |
 
 ## 路径映射（历史书签）

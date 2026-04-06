@@ -16,6 +16,8 @@ alwaysApply: true
 - 新项目 Bootstrap：直接采用全套目录与门禁。
 - 历史项目 Retrofit：按渐进策略接入（observe/warn/enforce）。
 
+**与历史内部规范冲突时**：在业务仓库中请使用 [**adapters/**](adapters/README.md) 模板（条文 + 决策记录 + 可选 Cursor 规则片段），将 harness 约定置于默认优先，例外仅走 `legacy-baseline` 登记。
+
 ## 2.1 权威优先级（冲突时）
 
 当用户指令、本协议、Cursor 规则或其它文档要求不一致时，按下列顺序解释（前者优先）：

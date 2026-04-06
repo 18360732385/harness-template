@@ -16,6 +16,8 @@
 
 **仅 AI 协作流、暂不接治理模板时** 的最小复制包：`harness-collab/AGENTS.md`、`func.md`、`product-specs/`、`design-docs/`、`exec-plans/`，以及任选 `.cursor/rules` 或 `cursor-rules/`；可不复制 `methodology/00-governance`。
 
+若存量仓库已有成体系的内部规范且可能与 harness 不一致，建议一并复制 [**adapters/**](../../adapters/README.md)，在业务侧明确 **harness 默认优先** 与 **baseline 豁免**（不涉及改业务代码）。
+
 **何时切换到 `-Pharness-new`**：新项目起步即采用；或存量项目完成 observe/warn 收敛、团队同意以覆盖率与严格 Checkstyle 阻塞合入时。
 
 ## 五步迁移
